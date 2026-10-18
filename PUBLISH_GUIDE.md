@@ -21,12 +21,12 @@ update `CITATION.cff`/release notes with the DOI and attach links in the Kaggle 
 
 ## 1. GitHub — publish the code/data release
 
-Assumes the owner is logged into GitHub and has a repository `arc-selection` (or creates it empty).
+Assumes the owner is logged into GitHub and has a repository `arc-selection` (already created and pushed: https://github.com/longlive1234/arc-selection).
 
 ```bash
 # 1) push the release repo from the local git repository (already committed + tagged)
 cd release/arc-selection
-git remote add origin git@github.com:<OWNER>/arc-selection.git      # or https://github.com/<OWNER>/...
+git remote add origin git@github.com:longlive1234/arc-selection.git      # or https://github.com/longlive1234/...
 git push -u origin main --tags
 
 # 2) optional: verify the bundle reproduces the same tree elsewhere
@@ -41,7 +41,7 @@ gh release create v0.1.0-paper \
     paper/paper.pdf \
     release/arc-selection-v0.1.0.tar.gz \
     release/arc-selection-v0.1.0.bundle \
-    --repo <OWNER>/arc-selection \
+    --repo longlive1234/arc-selection \
     --title "ARC Prize 2026 paper + reproducible release v0.1.0" \
     --notes-file release/RELEASE_NOTES.md
 ```
@@ -102,7 +102,7 @@ paper track). Do not upload a PDF only: arXiv expects LaTeX source for this cont
 5. **Title / authors:** as in the draft; add all agreed authors.
 6. **Abstract:** paste (plain text/LaTeX-safe version below).
 7. **Comments field (suggested):**
-   `ARC Prize 2026 Paper Track. Main text: 4,986 words; 14 pages, 8 figures, 6 tables. Code and CPU-reproducible benchmark: https://github.com/<OWNER>/arc-selection (DOI: 10.5281/zenodo.XXXXXXX). No end-to-end solver score or leaderboard claim.`
+   `ARC Prize 2026 Paper Track. Main text: 4,986 words; 14 pages, 8 figures, 6 tables. Code and CPU-reproducible benchmark: https://github.com/longlive1234/arc-selection (DOI: 10.5281/zenodo.XXXXXXX). No end-to-end solver score or leaderboard claim.`
 8. **License:** arXiv non-exclusive license (or CC BY 4.0 if consistent with the team decision).
 9. After announcement: add the arXiv ID to `CITATION.cff`, README, Kaggle writeup and GitHub release
    notes.
@@ -145,3 +145,19 @@ paper track). Do not upload a PDF only: arXiv expects LaTeX source for this cont
 - [ ] Author list / order agreed; acknowledgement of third-party data and the public solver
       notebooks included in the paper's references and `ATTRIBUTION`.
 - [ ] Kaggle writeup updated with links: submission notebook, GitHub repo, DOI/arXiv, PDF.
+
+
+---
+
+## Status (updated 2026-10-18): ALREADY PUBLISHED
+
+Both repositories are live on GitHub under the owner account:
+
+- Code / reproducible benchmark (MIT-0, release `v0.1.0` with assets):
+  **https://github.com/longlive1234/arc-selection**
+- Paper + artifacts (CC BY 4.0, tag `v1.0-draft`):
+  **https://github.com/longlive1234/arc2026-paper**
+
+Remaining optional steps: (a) Zenodo upload of `paper.pdf` + `arc-selection-v0.1.0.tar.gz` for a DOI;
+(b) arXiv submission from `arxiv_source/` (Overleaf, pdfLaTeX) if endorsement is available.
+Cite both repositories in any writeup; update `CITATION.cff` with the DOI once minted.
