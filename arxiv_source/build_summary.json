@@ -1,0 +1,19 @@
+{
+  "figures": 8,
+  "tables": 6,
+  "refs": 30,
+  "missing": [],
+  "title": "Two Guesses, One Score: Coverage-Optimal Selection and Its Empirical Limits in ARC-AGI-2 Solver Pools",
+  "subtitle": "Theory, a pre-registered benchmark on real solver candidate pools, and a measured negative result",
+  "n_refs": 30,
+  "figures_copied": [
+    "fig1_pipeline.png",
+    "fig2_selection_rules.png",
+    "fig3_pool_diagnostics.png",
+    "fig4_selection_schematic.png",
+    "fig5a_taxonomy.png",
+    "fig5b_train_vs_eval.png",
+    "fig6a_eval_task_gallery.png",
+    "fig6b_difficulty_prior.png"
+  ]
+}

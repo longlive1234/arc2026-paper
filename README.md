@@ -2,7 +2,7 @@
 
 **Title:** *Two Guesses, One Score: Coverage-Optimal Selection and Its Empirical Limits in ARC-AGI-2 Solver Pools*
 **Subtitle:** *Theory, a pre-registered benchmark on real solver candidate pools, and a measured negative result*
-**Status:** working paper / preprint draft (18 October 2026). No priority claim. Not peer reviewed.
+**Status:** working paper / preprint draft v3 (20 October 2026; 4,997-word main text; 30 references). No priority claim. Not peer reviewed. v3 applies the official-competition-eval patch (120 tasks / 172 inputs) and the updated novelty positioning ([26]–[30]); v2 is archived in the project workspace (`paper_planC_draft_v2.md`, sha256 `6ae661c5…d86ccb6`).
 
 ARC-AGI-2 gives each test input exactly **two attempts**, scored by exact match. This paper asks a
 decision question that is separate from solving: *given a pool of candidate answers, which two should
