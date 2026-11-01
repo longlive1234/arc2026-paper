@@ -2,7 +2,7 @@
 
 **Title:** *Compute Cannot Buy Identifiability: Information-Limited Two-Attempt Selection in ARC-AGI-2 Solver Pools*
 **Subtitle:** *An information bound, a conditional compute-separation theorem, and measured evidence from real solver pools and six scored submissions*
-**Status:** **v5 working draft (1 November 2026)** — 6,658-word main text (recorded internal v5 cap 6,700), 41 references, 11 figures, 10 tables; v4 (`paper_planC_draft_v4.md`, sha256 `784cffc7…`) remains frozen; no priority claim; not peer reviewed. v5 adds **Theorem 6** (proven label-free identifiability bound), **Prop. 6e/6f and Cor. 6g** (non-vacuity, score-conditional certificate, negative result about full-metadata bounds), conditional **Theorem 7** (compute cannot substitute), lemmas 6a/6b/6d, T5 downgraded to a setting observation, D1/D2 real-data analysis, and refs 29–41.
+**Status:** **v6 (1 November 2026)** — 8,109-word main text (internal cap 8,200), 42 references, 12 figures, 13 tables; v4 (`drafts/paper_planC_draft_v4.md`) and v5 (`drafts/paper_planC_draft_v5.md`) are archived frozen copies. No priority claim; not peer reviewed. v6 adds **Theorem 8 (verifier-induced identifiability)**, an AWM-inspired verify-first experiment on the public eval split, and **large-scale GPU numerical verification** of Theorems 6–7; Theorem 6 remains proven but empirically vacuous, T7 conditional, T8 realized only in its impossibility-certificate regime with our bounded hypothesis class.
 
 ## What the paper contributes
 
@@ -20,6 +20,12 @@ are mutually exclusive, so the two-slot decision is a **label-free identificatio
    identification gap is budget-invariant; verifier-free compute cannot buy identifiability.
 5. Supporting lemmas: swap regret `p2−p3` (6a), fixed-pool monotonicity and pass@k-inversion-as-generation-drift
    (6b), descriptive `g(L)·s(L)` identity (6d); T5 is recorded as a **setting observation** (SPLIT overlap).
+6. **Theorem 8 (verifier-induced identifiability, AWM-inspired):** demonstrations are the only labels; a
+   verifier that leaves a unique behaviour class closes the gap (Δ=0, coverage `g_V(d)`), otherwise the
+   residual gap is `g_V(1−Σ_{j≤2}q_j)`, and `A_d=∅` yields an *impossibility certificate* enabling
+   depth-allocation/water-filling; verifier-assisted ceiling `Σg_t` requires `g_V=g` and `q1+q2=1`.
+   Hybrid submission correction: exact coverage `p1+p2` (no product form); verifier-first beats TTT-first
+   iff `E[1{unique}(φ−p_w2)]>0`; with zero verifier coverage it reduces to TTT top-1+runner-up.
 
 ### Measured limits (honest)
 
@@ -29,6 +35,16 @@ are mutually exclusive, so the two-slot decision is a **label-free identificatio
 - D2 candidate-prefix replay is **definitional**, not T7 evidence; T7's support is only the hidden-score
   ladder (S5 16.25 > S6 = S5_ens 15.42 > S5+LegC 14.17), consistent **not conclusive** (n=6, truncation,
   S6 selection bug, 53-task superset, packet/config differences, unknown hidden size).
+- **Verifier experiment (v6):** bounded-DSL verify-first search (depth ≤2, 56 cores) certifies **0/120**
+  public-eval tasks (120/120 depth-2 impossibility certificates; 334.7 CPU-min); a 12-task training control
+  yields **1/12** unique solves; learned-rule families 0/120; LLM proposals (DeepSeek-chat k=4) 0/20 and a
+  reasoner-token-cap infrastructure null. So T8's restoration mechanism exists but its coverage `g_V` is
+  ≈0 with an affordable hypothesis class — the bottleneck is generation, not verification.
+- **GPU-scale numerical validation (v6):** T6 at **10^8 instances** → 0 violations at 1e-6 tolerance
+  (max float excess 1.12e-7; 34.9% non-vacuous; 28.3 s); T7 at **2·10^6 tasks** → label-free ceiling
+  0.739684 vs verifier ceiling 1.0, gap **0.260316 = mean δ** (budget-invariant to 1e-12), water-filling
+  > uniform at every rung (20.1 s). Ran on a 12 GB TITAN Xp (torch 2.5.1+cu118) with 56 vCPU; commands,
+  seeds and shas are in §5.4 and `artifacts/`.
 - Six scored submissions; champion S5 16.25%; dev20 S1 20.0%; reference replication 3/20; ~30 notebook
   band external only; no SOTA/medal claim.
 
@@ -53,9 +69,12 @@ are mutually exclusive, so the two-slot decision is a **label-free identificatio
 
 | file | contents |
 |---|---|
-| `paper.pdf` | compiled paper v4 (17 pages, 9 figures, 8 tables) |
-| `drafts/paper_planC_draft_v4.md` | Markdown source of the paper v4 (4,981 words) |
-| `writeup_kaggle_v4.md` | Kaggle paper-track writeup (≤1,500 words) |
+| `paper.pdf` | compiled paper v6 (24 pages, 12 figures, 13 tables) |
+| `drafts/paper_planC_draft_v6.md` | Markdown source of the paper v6 (8,109 words) |
+| `writeup_kaggle_v6.md` | Kaggle paper-track writeup (≤1,500 words) |
+| `artifacts/verifier/` | verifier experiment JSON+MD (eval120 0/120, train12 1/12, learned-rule/LLM nulls) |
+| `artifacts/gpu_sim/` | GPU-scale T6/T7 validation JSON+MD + raw simulation outputs |
+| `artifacts/raw/` | canonical engine outputs used for the paper tables |
 | `evidence_table.md` | numeric-evidence audit table (all paper numbers traceable to scripts) |
 | `kaggle_package_final.md` | final submission ID, media-gallery order, scoreboard |
 | `FINAL_REPORT_CN.md` | Chinese final report (scores, ablations, honest limits) |
@@ -69,14 +88,16 @@ are mutually exclusive, so the two-slot decision is a **label-free identificatio
 - Code + CPU experiments: https://github.com/longlive1234/arc-selection (MIT-0). CPU-only
   `analysis/run_all.sh` reproduces every selection number in ≈3 minutes; `pytest` covers the solver,
   packet builder, rerun gates and safety cells.
-- Kaggle notebook: `wen134/arc2026-ttt` (private kernel, L4×4, offline; competition submission ref
-  **57681632** is the champion entry). The final Nov 2 entry re-submits the best COMPLETE version.
+- Kaggle notebook: `wen134/arc2026-ttt` (L4×4, offline; competition submission ref **57681632** is the
+  champion entry). The final Nov 2 entry re-submits the best COMPLETE version.
+- Verifier + GPU experiments: `make verifier-eval`, `make verifier-train-smoke`, `make learned-rules`,
+  `make gpu-bound`, `make gpu-alloc` in `arc-selection/lab/` (GPU optional; CPU fallback works).
 
 ## Citation
 
 ```bibtex
 @misc{arc2026twoguesses,
-  title  = {Two Guesses, One Score: Coverage-Optimal Selection and Its Empirical Limits in ARC-AGI-2 Solver Pools},
+  title  = {Compute Cannot Buy Identifiability: Information-Limited Two-Attempt Selection in ARC-AGI-2 Solver Pools},
   author = {{ARC Prize 2026 Paper Track team}},
   year   = {2026},
   note   = {Preprint; code: https://github.com/longlive1234/arc-selection},
