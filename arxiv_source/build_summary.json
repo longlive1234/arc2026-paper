@@ -1,11 +1,11 @@
 {
-  "figures": 11,
-  "tables": 11,
-  "refs": 41,
+  "figures": 12,
+  "tables": 13,
+  "refs": 42,
   "missing": [],
   "title": "Compute Cannot Buy Identifiability: Information-Limited Two-Attempt Selection in ARC-AGI-2 Solver Pools",
   "subtitle": "An information bound, a conditional compute-separation theorem, and measured evidence from real solver pools and six scored submissions",
-  "n_refs": 41,
+  "n_refs": 42,
   "figures_copied": [
     "fig1_pipeline.png",
     "fig2_selection_rules.png",
@@ -17,6 +17,7 @@
     "fig6b_difficulty_prior.png",
     "fig7_pool_scaling.png",
     "fig8_budget_accuracy.png",
-    "fig9_budget_ladder.png"
+    "fig9_budget_ladder.png",
+    "fig9_verifier_identifiability.png"
   ]
 }
