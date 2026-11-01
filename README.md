@@ -1,24 +1,36 @@
-# Two Guesses, One Score — ARC Prize 2026 Paper Track (paper + artifacts)
+# Compute Cannot Buy Identifiability — ARC Prize 2026 Paper Track (paper + artifacts)
 
-**Title:** *Two Guesses, One Score: Coverage-Optimal Selection and Its Empirical Limits in ARC-AGI-2 Solver Pools*
-**Subtitle:** *Theory, a pre-registered benchmark on real solver candidate pools, and a measured negative result*
-**Status:** **v4 freeze (1 November 2026)** — 4,981-word main text (limit 5,000), 30 references, 9 figures, 8 tables; no priority claim; not peer reviewed. Supersedes v3 (`paper_planC_draft_v3.md`, sha256 `00435c14…`). v4 applies the **Theorem-4 exact-match correction**, adds the real Kaggle code-competition results, and replaces the pending diversification table with an honest exploratory check.
+**Title:** *Compute Cannot Buy Identifiability: Information-Limited Two-Attempt Selection in ARC-AGI-2 Solver Pools*
+**Subtitle:** *An information bound, a conditional compute-separation theorem, and measured evidence from real solver pools and six scored submissions*
+**Status:** **v5 working draft (1 November 2026)** — 6,658-word main text (recorded internal v5 cap 6,700), 41 references, 11 figures, 10 tables; v4 (`paper_planC_draft_v4.md`, sha256 `784cffc7…`) remains frozen; no priority claim; not peer reviewed. v5 adds **Theorem 6** (proven label-free identifiability bound), **Prop. 6e/6f and Cor. 6g** (non-vacuity, score-conditional certificate, negative result about full-metadata bounds), conditional **Theorem 7** (compute cannot substitute), lemmas 6a/6b/6d, T5 downgraded to a setting observation, D1/D2 real-data analysis, and refs 29–41.
 
 ## What the paper contributes
 
-ARC-AGI-2 gives each test input exactly **two attempts**, scored by exact match. The paper formalizes
-the two-slot choice as **coverage optimization** and proves five results:
+ARC-AGI-2 gives each test input exactly **two attempts**, scored by exact match. Distinct candidate grids
+are mutually exclusive, so the two-slot decision is a **label-free identification** problem:
 
-1. independent-case top-2 optimality (coverage objective `U(a1,a2)=1−P(¬C1∧¬C2)`);
-2. duplicate attempts are strictly dominated by distinct positive-probability candidates;
-3. argmax-once is suboptimal under correlated errors (exact Bernoulli-correlation pair formula);
-4. an exact **diversification threshold** `ρ < ρ* = sqrt(p2(1−p1)/(p1(1−p2)))`, with the crucial
-   **exact-match correction**: two distinct grids are mutually exclusive (`C1∧C2=∅` ⇒ ρ<0), so the
-   positive-ρ regime is unreachable and top-2 by calibrated probability is optimal — the real null is
-   estimation/identifiability, not a correlation gate;
-5. a **budget-constrained coverage allocation** theorem (Jensen ⇒ uniform under concave coverage;
-   greedy/water-filling under heterogeneous concavity; single-crossing ⇒ difficulty-threshold rule;
-   saturation ⇒ reallocate compute).
+1. **Theorem 6 (proven):** for any metadata rule, `E[U] ≤ p1+p2+min{T, sqrt(I(C;Z)/2)}` (nats), capped by
+   oracle coverage; attained at I=0, vacuous when `I≥2T²`. The pilot certificate transfers to hidden tasks
+   only under an explicit exchangeability assumption.
+2. **Prop. 6e / Cor. 6g:** unconditional Pinsker-type bounds are **vacuous in score-dominated pools** and
+   cannot certify label-free selection; the negative result is about the method.
+3. **Prop. 6f (sharpest):** splitting `Z=(S,Z')` gives `E[U] ≤ U_S + min{g−U_S, sqrt(I(C;Z'|S)/2)}`, which is
+   **tight (equals U_S) under score sufficiency**; only residual metadata can help.
+4. **Theorem 7 (conditional A1–A3):** `lim_{C→∞} score = Σ_t(g_t∞−Δ_t∞)` is allocation-independent; the
+   identification gap is budget-invariant; verifier-free compute cannot buy identifiability.
+5. Supporting lemmas: swap regret `p2−p3` (6a), fixed-pool monotonicity and pass@k-inversion-as-generation-drift
+   (6b), descriptive `g(L)·s(L)` identity (6d); T5 is recorded as a **setting observation** (SPLIT overlap).
+
+### Measured limits (honest)
+
+- D1 certificates are **vacuous on every pool** (I=.059–.183 vs 2T²=.008–.041): T6 is proven, not validated
+  here; on dev20 S2/S5/S5_ens the measured gain equals the tail T exactly (ratio 1.00), while CompressARC
+  loses −2.25 pp; +8.11 pp S5_ens headroom is selectable but **not realized** (hidden 15.42 < S5 16.25).
+- D2 candidate-prefix replay is **definitional**, not T7 evidence; T7's support is only the hidden-score
+  ladder (S5 16.25 > S6 = S5_ens 15.42 > S5+LegC 14.17), consistent **not conclusive** (n=6, truncation,
+  S6 selection bug, 53-task superset, packet/config differences, unknown hidden size).
+- Six scored submissions; champion S5 16.25%; dev20 S1 20.0%; reference replication 3/20; ~30 notebook
+  band external only; no SOTA/medal claim.
 
 ## Measured result: bounded negative + real competition numbers
 

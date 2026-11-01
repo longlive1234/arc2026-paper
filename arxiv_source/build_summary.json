@@ -1,11 +1,11 @@
 {
-  "figures": 8,
-  "tables": 6,
-  "refs": 30,
+  "figures": 11,
+  "tables": 10,
+  "refs": 41,
   "missing": [],
-  "title": "Two Guesses, One Score: Coverage-Optimal Selection and Its Empirical Limits in ARC-AGI-2 Solver Pools",
-  "subtitle": "Theory, a pre-registered benchmark on real solver candidate pools, and a measured negative result",
-  "n_refs": 30,
+  "title": "Compute Cannot Buy Identifiability: Information-Limited Two-Attempt Selection in ARC-AGI-2 Solver Pools",
+  "subtitle": "An information bound, a conditional compute-separation theorem, and measured evidence from real solver pools and six scored submissions",
+  "n_refs": 41,
   "figures_copied": [
     "fig1_pipeline.png",
     "fig2_selection_rules.png",
@@ -14,6 +14,9 @@
     "fig5a_taxonomy.png",
     "fig5b_train_vs_eval.png",
     "fig6a_eval_task_gallery.png",
-    "fig6b_difficulty_prior.png"
+    "fig6b_difficulty_prior.png",
+    "fig7_pool_scaling.png",
+    "fig8_budget_accuracy.png",
+    "fig9_budget_ladder.png"
   ]
 }
