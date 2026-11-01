@@ -2,63 +2,63 @@
 
 **Title:** *Two Guesses, One Score: Coverage-Optimal Selection and Its Empirical Limits in ARC-AGI-2 Solver Pools*
 **Subtitle:** *Theory, a pre-registered benchmark on real solver candidate pools, and a measured negative result*
-**Status:** working paper / preprint draft v3 (20 October 2026; 4,997-word main text; 30 references). No priority claim. Not peer reviewed. v3 applies the official-competition-eval patch (120 tasks / 172 inputs) and the updated novelty positioning ([26]–[30]); v2 is archived in the project workspace (`paper_planC_draft_v2.md`, sha256 `6ae661c5…d86ccb6`).
+**Status:** **v4 freeze (1 November 2026)** — 4,981-word main text (limit 5,000), 30 references, 9 figures, 8 tables; no priority claim; not peer reviewed. Supersedes v3 (`paper_planC_draft_v3.md`, sha256 `00435c14…`). v4 applies the **Theorem-4 exact-match correction**, adds the real Kaggle code-competition results, and replaces the pending diversification table with an honest exploratory check.
 
-ARC-AGI-2 gives each test input exactly **two attempts**, scored by exact match. This paper asks a
-decision question that is separate from solving: *given a pool of candidate answers, which two should
-be submitted?* We formalize this as **coverage optimization**, prove three results (independent-case
-top-2 optimality, strict dominance of duplicate attempts, suboptimality of argmax-once under
-correlated errors), give a calibrated plug-in estimator, and add a **score-sufficiency criterion** for
-when reranking cannot realize a pool's oracle headroom.
+## What the paper contributes
 
-We then run a **pre-registered benchmark on real third-party candidate pools**:
+ARC-AGI-2 gives each test input exactly **two attempts**, scored by exact match. The paper formalizes
+the two-slot choice as **coverage optimization** and proves five results:
 
-| dataset | unit | N | oracle-any-2 | solver top-2 | coverage rule |
-|---|---|---|---|---|---|
-| CompressARC (ARC-AGI-1, headline) | task | 400 | **34.25%** | **20.00%** | 17.75% |
-| ARC-AGI-2 public eval TTT pilot (third-party dump) | test input | 16 | 31.25% | 31.25% | 31.25% |
-| simulated pools (mechanism only) | task | 120 | 41.67% | 23.33% (argmax) | **41.67%** |
+1. independent-case top-2 optimality (coverage objective `U(a1,a2)=1−P(¬C1∧¬C2)`);
+2. duplicate attempts are strictly dominated by distinct positive-probability candidates;
+3. argmax-once is suboptimal under correlated errors (exact Bernoulli-correlation pair formula);
+4. an exact **diversification threshold** `ρ < ρ* = sqrt(p2(1−p1)/(p1(1−p2)))`, with the crucial
+   **exact-match correction**: two distinct grids are mutually exclusive (`C1∧C2=∅` ⇒ ρ<0), so the
+   positive-ρ regime is unreachable and top-2 by calibrated probability is optimal — the real null is
+   estimation/identifiability, not a correlation gate;
+5. a **budget-constrained coverage allocation** theorem (Jensen ⇒ uniform under concave coverage;
+   greedy/water-filling under heterogeneous concavity; single-crossing ⇒ difficulty-threshold rule;
+   saturation ⇒ reallocate compute).
 
-**Measured result: a bounded negative.** On the 400-task CompressARC pools, 14.25 points of oracle
-headroom exist but the solver's own score ordering already captures the recoverable two-attempt mass;
-every calibrated/coverage rule we tested is at or below it. In simulation the rule mechanics are
-positive (+18.34 pp over argmax) when candidates carry score-orthogonal evidence. Conclusion:
-**two attempts are not two chances in current open ARC solvers — the bottleneck is candidate
-generation/coverage, not selection.** Falsification conditions F1–F3 are stated in the paper.
+## Measured result: bounded negative + real competition numbers
 
-The paper also reports: a characterization and SHA-256 leakage audit of the public ARC-AGI-2 data; a
-landscape analysis of nine public 2026 solver notebooks (displayed leaderboard 29.7–31.4 vs 1.7–4.8%
-measured on their saved artifacts); an open-source offline TTT system (CPU-validated; GPU end-to-end
-not measured); and a factual platform-gated access report (no hidden-test access, zero Kaggle GPU-hours).
+- **Selection study (real third-party pools):** CompressARC 400 tasks — oracle-any-2 **34.25%**,
+  solver top-2 **20.00%**, coverage-optimal **17.75%**; a 16-input ARC-AGI-2 pilot ties every rule at
+  the 31.25% oracle ceiling; simulation validates mechanics (+18.33 pp over argmax, 95% CI [11.67, 25.0]).
+  Verdict: `DOWNGRADE_TO_ANALYSIS` — selection is not the bottleneck; candidate generation is.
+- **Real Kaggle code-competition submissions (hidden half, public LB):**
+  **S5 L4 = 16.25% (best; ref 57681632)**, S6 dual-config 15.42%, S5_ens two-model 15.42%,
+  S1 L4 14.17%, S5+LegC verified-induction hybrid 14.17% (net-negative −2.08 vs S5),
+  CPU probe 0.00%; one invalid-format attempt and one rerun error are documented in the ledger.
+- **Final LB context (snapshot 2026-11-01T00:13Z):** 3,572 ranked teams; leader 88.06; our champion
+  16.25 → rank **2,414 / 3,572** (67.5th percentile from top); the ~30–31 public-notebook band sits at
+  ranks ≈500–1000. Public LB shows our **best** score, not the last submission. No SOTA/medal claim.
+- **Reference replication:** the public notebook pipeline (NVARC TTT + optional DSL induction) measured
+  **3/20** on our 20-task public-eval subset (below our S1 4/20) and ~17 min/task, so it is not a
+  matched reproduction of the ~30 band.
 
 ## Files
 
 | file | contents |
 |---|---|
-| `paper.pdf` | compiled paper (14 pages, 8 figures, 6 tables) |
-| `paper_planC_draft_v2.md` | Markdown source of the paper (4,986 words main text) |
-| `arxiv_source/` | LaTeX source (`main.tex` + figures) for Overleaf / arXiv; see `README_OVERLEAF.md` |
-| `cover.png` | cover image |
-| `figures/` | Figures 1–6 (build assets) |
-| `evidence_table.md` | claim → artifact → status mapping for every quantitative claim |
-| `SELECTION_RESULTS.md`, `selection_benchmark.json` | frozen benchmark results (Table 2 source) |
-| `PUBLISH_GUIDE.md` | how to publish (GitHub / Zenodo DOI / arXiv) |
+| `paper.pdf` | compiled paper v4 (17 pages, 9 figures, 8 tables) |
+| `drafts/paper_planC_draft_v4.md` | Markdown source of the paper v4 (4,981 words) |
+| `writeup_kaggle_v4.md` | Kaggle paper-track writeup (≤1,500 words) |
+| `evidence_table.md` | numeric-evidence audit table (all paper numbers traceable to scripts) |
+| `kaggle_package_final.md` | final submission ID, media-gallery order, scoreboard |
+| `FINAL_REPORT_CN.md` | Chinese final report (scores, ablations, honest limits) |
+| `kaggle_submissions.md` | full submission ledger (valid, invalid, errored, missed) |
+| `figures/` | all figures incl. final LB snapshot (Fig. 8) |
+| `arxiv_source/` | LaTeX source (`main.tex` + figures) for Overleaf / arXiv |
+| `cover.png`, `gallery_order.md` | paper-track media gallery assets |
 
-## Code and reproducible benchmark
+## Reproduction
 
-The selection-rule engine and the CPU-reproducible benchmark live in a separate MIT-0 repository:
-**https://github.com/longlive1234/arc-selection** (release `v0.1.0`).
-
-```bash
-git clone https://github.com/longlive1234/arc-selection
-cd arc-selection && pip install -r requirements.txt
-make repro-cpu        # reproduces the reduced CPU benchmark (~3 s, numpy only)
-```
-
-The release ships reduced derived pools so it reproduces without network access; the full third-party
-candidate dumps are fetched by `scripts/fetch_third_party.sh` (unlicensed public-notebook data is
-never redistributed). The paper's Table 2 was produced by the full analysis pipeline in the private
-working tree and is frozen in `selection_benchmark.json` (sha256 `6c16abfe…b71a`).
+- Code + CPU experiments: https://github.com/longlive1234/arc-selection (MIT-0). CPU-only
+  `analysis/run_all.sh` reproduces every selection number in ≈3 minutes; `pytest` covers the solver,
+  packet builder, rerun gates and safety cells.
+- Kaggle notebook: `wen134/arc2026-ttt` (private kernel, L4×4, offline; competition submission ref
+  **57681632** is the champion entry). The final Nov 2 entry re-submits the best COMPLETE version.
 
 ## Citation
 
@@ -67,7 +67,7 @@ working tree and is frozen in `selection_benchmark.json` (sha256 `6c16abfe…b71
   title  = {Two Guesses, One Score: Coverage-Optimal Selection and Its Empirical Limits in ARC-AGI-2 Solver Pools},
   author = {{ARC Prize 2026 Paper Track team}},
   year   = {2026},
-  note   = {Preprint draft; code: https://github.com/longlive1234/arc-selection},
+  note   = {Preprint; code: https://github.com/longlive1234/arc-selection},
   url    = {https://github.com/longlive1234/arc2026-paper}
 }
 ```

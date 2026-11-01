@@ -2,13 +2,13 @@
 
 *Theory, a pre-registered benchmark on real solver candidate pools, and a measured negative result*
 
-**Working draft v4 — 2026-10-21 (Theorem 5 applied; pre-submission-score).** NOT FROZEN. Base v4 sha256 `68eabd59…`; Theorem 5 patch applied after dry-run verification. v4 PDF to be rebuilt at freeze (`paper/paper.pdf` is still v3). Derived from v3 (sha256 `00435c14…29972`; v3 remains the published draft). This copy reserves slots and marks `[[V4-PEND: …]]` placeholders for the first valid Kaggle submission (ref **57456856**) and its public score, GPU dev measurements, the new diversification-threshold theorem, and updated engineering/limitations text. Do not publish until every `V4-PEND` is resolved and the Lead freezes the final numbers. **No priority claim.**
+**Working draft v4 — 2026-10-21 (Theorem 5 applied; pre-submission-score).** NOT FROZEN. Base v4 sha256 `68eabd59…`; Theorem 5 patch applied after dry-run verification. v4 PDF to be rebuilt at freeze (`paper/paper.pdf` is still v3). Derived from v3 (sha256 `00435c14…29972`; v3 remains the published draft). This copy marks remaining pending slots for Figure 8/Table 11 (final LB snapshot), the S5b score, and the processed-task count; the first submission attempt (57456856) errored and its retry scored 0.00. Do not publish until every `V4-PEND` is resolved and the Lead freezes the final numbers. **No priority claim.**
 
 ---
 
 ## Abstract
 
-ARC-AGI-2 gives each test input exactly two attempts, scored by exact match, so choosing answers is a decision problem. We formalize it as coverage optimization — maximize U(a1,a2)=1−P(¬C(a1)∧¬C(a2)) — and prove five results: independent-case top-2 optimality, duplicate dominance, argmax-once suboptimality under correlated errors, an exact diversification threshold for when the second attempt pays, and a budget-allocation theorem. Simulation is positive (coverage 41.67% vs duplicate 16.67% and argmax 23.33%; +18.33 pp, 95% CI [11.67, 25.0]), but on real public pools the solver's own score ordering already saturates recoverable coverage: on 400 CompressARC tasks top-2 covers 20.00% and coverage-optimal 17.75% against 34.25% oracle, leaving 14.25 points that re-ranking cannot reach; a 16-input ARC-AGI-2 pilot ties every rule at the 31.25% oracle ceiling. Two attempts are not two chances unless the pool carries independent evidence; the bottleneck is candidate generation/coverage. We report the TTT system, data/leakage audit, and the first submission attempt (ref **57456856**), which errored on rerun with no public score; a hardened retry is pending [[V4-PEND: retry ref/date/status/score]]. LB context: the 2026-10-20 Kaggle public-leaderboard snapshot (`analysis/results/leaderboard_snapshot_2026-10-20.json`; rank-percentile points, e.g. top-10% = rank 309 at 31.81; no medal-cutoff claim).. No state-of-the-art claim is made.
+ARC-AGI-2 gives each test input exactly two attempts, scored by exact match, so choosing answers is a decision problem. We formalize it as coverage optimization — maximize U(a1,a2)=1−P(¬C(a1)∧¬C(a2)) — and prove five results: independent-case top-2 optimality, duplicate dominance, argmax-once suboptimality under correlated errors, an exact diversification threshold for when the second attempt pays, and a budget-allocation theorem. Simulation is positive (coverage 41.67% vs duplicate 16.67% and argmax 23.33%; +18.33 pp, 95% CI [11.67, 25.0]), but on real public pools the solver's own score ordering already saturates recoverable coverage: on 400 CompressARC tasks top-2 covers 20.00% and coverage-optimal 17.75% against 34.25% oracle, leaving 14.25 points that re-ranking cannot reach; a 16-input ARC-AGI-2 pilot ties every rule at the 31.25% oracle ceiling. Two attempts are not two chances unless the second candidate's correctness can be estimated independently of the first; the bottleneck is candidate generation/coverage. Six submissions scored: S5 **16.25%** (ref **57681632**, champion), S6 and S5_ens 15.42%, S1 and S5+LegC 14.17%, CPU probe 0.00%; the same pipeline measures **20.0% task-level** on a 20-task public-eval subset. No score exceeds 16.25; a reference replication reached 3/20 on dev20, far below the ~30 band. LB context: the 2026-10-20 Kaggle public-leaderboard snapshot (`analysis/results/leaderboard_snapshot_2026-10-20.json`; rank-percentile points, e.g. top-10% = rank 309 at 31.81; no medal-cutoff claim). No state-of-the-art claim is made.
 
 ---
 
@@ -20,7 +20,7 @@ Public practice ranks candidates by inverse consensus or a likelihood variant [3
 
 We contribute a formalization, a pre-registered test, a real attempt, and a measured answer. (i) We define the coverage objective, prove five results including a diversification threshold and a budget-allocation theorem, and give an exact Bernoulli-correlation pair formula and calibrated estimator (§3). (ii) We freeze a claim/downgrade protocol and benchmark real third-party pools at two scales plus simulated stress tests (§5). (iii) The measured result is bounded negative: the verdict is `DOWNGRADE_TO_ANALYSIS`, the simulation strongly positive (+18.33 pp over argmax, 95% CI [11.67, 25.0]), but on 400 CompressARC tasks top-2 covers 20.00% while coverage-optimal covers 17.75% against 34.25% oracle — 14.25 points not re-ranking-reachable; selection is not the bottleneck, candidate coverage/generation is. (iv) We report a real TTT submission attempt and GPU measurements (§4), data/leakage audit (§6), open-source system (§7), and landscape analysis (§8).
 
-Nearest prior work: public-notebook heuristics include coverage-aware set selection, MDL-divergence two-slot selection and structural attempt-2 distinctness [17, 23], and rank-based top-2 with minority recoveries [30]. A concurrent instrumentation study of a faithful NVARC reproduction — empirical, not a coverage model — reports a comparable pattern (26.1% vs 32.5% perfect selection; a grouped CV reranker no better than the deployed vote rule) [26]; the headroom observation is already documented. A coverage-vs-selection identifiability gap is formalised for single-answer deployment [28], and on ARC-AGI-1 an unbiased pass@k decomposition over M=5 candidate sets finds that selection already recovers ≈95% of the candidate ceiling (generation-bound) [27]. The coverage objective is classical [24, 25, 29]; we provide the two-attempt formalization, calibrated/correlated estimator, and score-sufficiency criterion.
+Nearest prior work: public-notebook heuristics include coverage-aware set selection, MDL-divergence two-slot selection and structural attempt-2 distinctness [17, 23], and rank-based top-2 with minority recoveries [30]. A concurrent instrumentation study of a faithful NVARC reproduction — empirical, not a coverage model — reports a comparable pattern (26.1% vs 32.5% perfect selection; a grouped CV reranker no better than the deployed vote rule) [26]; the headroom observation is already documented. A coverage-vs-selection identifiability gap is formalised for single-answer deployment [28], and on ARC-AGI-1 an unbiased pass@k decomposition finds that selection already recovers ≈95% of the candidate ceiling (generation-bound) [27]. The coverage objective is classical [24, 25, 29]; we provide the two-attempt formalization, calibrated/correlated estimator, and score-sufficiency criterion.
 
 ![Figure 1 — system overview](figures/fig1_pipeline.png)
 
@@ -42,7 +42,7 @@ Maximizing U differs from maximizing P(C(a_1)): the joint failure term couples t
 
  P_q = {(y_i, s_i, view_i, model_i, agree_i, shape_i)}, (2)
 
-with s_i a plausibility score, agree_i the view count, and shape_i a demonstration-derived flag. The pool's oracle ceiling bounds any rule's per-input accuracy and is reported alongside.
+with s_i a plausibility score, agree_i the view count, and shape_i a demonstration-derived flag. The pool's oracle ceiling bounds any rule's per-input accuracy.
 
 **Relation classes.** Pairs are grouped by shared failure factors: `same_grid` (correlation 1, never worth two attempts), `same_view` (same TTT state/augmentation), `same_model` (different views), and `cross_model`/`cross_source` (lowest correlation). The rule needs per-class error correlations, observable in metadata without labels.
 
@@ -76,7 +76,7 @@ Candidates share TTT state, augmentation view, beam prefix, and model. For two B
 
  U(i,j) = p_i + p_j − p_i p_j − ρ√(p_i(1−p_i)p_j(1−p_j)), (4)
 
-from P(¬C_i∧¬C_j)=(1−p_i)(1−p_j)+Cov(C_i,C_j). Two same-view candidates with perfectly correlated failures (ρ=1) force equal marginals p_i=p_j=p: their pair coverage is U=p, since the second attempt adds nothing on failure. An independent third candidate with p_3>0 gives U=p+p_3−p p_3>p; at p=0.50, p_3=0.35 the gain is +17.5 coverage points on that input. **Theorem 3.** Under positive error correlation, the pair maximizing the first guess is not in general coverage-optimal; a decorrelated candidate can strictly improve coverage. For ρ<1 the pairwise preference condition between the runner-up j and a decorrelated candidate k is
+from P(¬C_i∧¬C_j)=(1−p_i)(1−p_j)+Cov(C_i,C_j). Two same-view candidates with perfectly correlated failures (ρ=1) force equal marginals p_i=p_j=p: their pair coverage is U=p. An independent third candidate with p_3>0 gives U=p+p_3−p p_3>p; at p=0.50, p_3=0.35 the gain is +17.5 coverage points on that input. **Theorem 3.** Under positive error correlation, the pair maximizing the first guess is not in general coverage-optimal; a decorrelated candidate can strictly improve coverage. For ρ<1 the pairwise preference condition between the runner-up j and a decorrelated candidate k is
 
  (1−p_1)(p_k−p_j) > ρ_{1k}√(p_1(1−p_1)p_k(1−p_k)) − ρ_{1j}√(p_1(1−p_1)p_j(1−p_j)). (5)
 
@@ -98,22 +98,22 @@ and the pair strictly beats the top-1 **duplicated** attempt (`U_dup = p_1`) iff
 
 **Corollary 1 (equal marginals).** If `p_1 = p_2 = p` then `ρ* = 1` and `ΔU = p(1−p)(1−ρ)`: diversification pays for every `ρ<1`, maximized at `ρ=0` and worthless at `p∈{0,1}`.
 
-**Corollary 2 (skew shrinks the threshold).** For fixed `ρ>0`, diversification pays iff `p_2 > ρ²p_1/(1−p_1+ρ²p_1)`; for small probabilities `ρ* ≈ √(p_2/p_1)`, so any fixed positive correlation is eventually dominated by skew (e.g. `p_1=0.50, p_2=0.05` gives `ρ*≈0.229`).
+**Corollary 2 (skew shrinks the threshold).** For fixed `ρ>0`, diversification pays iff `p_2 > ρ²p_1/(1−p_1+ρ²p_1)`; for small probabilities `ρ* ≈ √(p_2/p_1)`, so any fixed positive correlation is eventually dominated by skew.
 
-**Corollary 3 (score sufficiency ⇒ gate never met).** In a score tie the solver cannot distinguish candidates; if correctness is score-determined (score sufficiency; §5), tied candidates share correctness (`ρ=1`, forcing `p_1=p_2`), so `ΔU=0` and diversification adds nothing. This mechanism is consistent with the real-pool null of §5: the deployed score absorbs shared evidence, and we expect the measured `ρ̂` to sit at or above `ρ*`; the pre-registered GPU-pool test (Appendix E) checks this (EXPLORATORY/PENDING).
+**Corollary 3 (score sufficiency and exact-match exclusivity; corrected 2026-10-26).** For non-exclusive verifiers, a score tie cannot distinguish candidates, and if correctness is score-determined (Proposition 5) tied candidates share correctness (`ρ=1`, forcing `p_1=p_2`), so `ΔU=0`. For **exact-match** ARC, distinct candidate grids are mutually exclusive: `C_i∧C_j=∅`, hence `ρ<0` always, the Theorem-4 gate is always met, and `U(a_1,a_2)=p_{a_1}+p_{a_2}` for any joint distribution; the optimal pair is the two largest calibrated `p_i` (Corollary 4). The real-pool null is therefore estimation/identifiability, not positive correlation: oracle headroom exists, but `p̂` cannot separate oracle-gap candidates from exposed metadata (Proposition 5).
 
-**Derived gate and falsifier.** Deploy diversification across a relation class only when `ρ̂_c < ρ*(p̂_1,p̂_2) − δ` (δ=0.05, frozen); otherwise take the duplicate/consensus alternative — the gate is derived, not tuned. The empirical instantiation is falsifiable on held-out units: **P1** admitted pairs beat their top-1 duplicate (paired Δ>0, 80% CI>0); **P2** rejected pairs do not (Δ≤0); **P3** the predicted-vs-realized gain slope lies in [0.7,1.3]. Failure falsifies the estimator/relation-class model, never the algebra; protocol and tool are in Appendix E. Table 10/Fig. 9 reserve the exploratory GPU-pool test; the dev2 pilot is labelled PILOT with no verdict. [[V4-PEND: Table 10/Fig. 9 values; P1/P2/P3 PENDING until post-Oct-24 10–20-task run.]]
+**Derived gate and falsifier.** For non-exclusive verifiers, deploy diversification across a relation class only when `ρ̂_c < ρ*(p̂_1,p̂_2) − δ` (δ=0.05, frozen); otherwise take the duplicate/consensus alternative — the gate is derived, not tuned. The empirical instantiation is falsifiable on held-out units: **P1** admitted pairs beat their top-1 duplicate (paired Δ>0, 80% CI>0); **P2** rejected pairs do not (Δ≤0); **P3** the predicted-vs-realized gain slope lies in [0.7,1.3]. Failure falsifies the estimator/relation-class model, never the algebra; protocol and tool are in Appendix E. The threshold test ran on dev20 pools, but exact-match mutual exclusivity makes its positive-ρ premise inapplicable: every class has `ρ̂<0` (same-model/cross-view −0.13, score-tied −0.18), so no deployable pair is rejected and P1/P2/P3 are untestable (§4.8). This is an EXPLORATORY check, not evidence; Table 10 is a prose check and Fig. 9 is omitted.
 
 
-[[V4-PEND: **Table 10 / Figure 9 (reserved)** — diversification-threshold test by relation class (n pairs, median p̂₁,p̂₂, ρ̂, ρ*, predicted ΔÛ, measured Δ pass@2 with CIs, verdict) and the threshold/predicted-vs-realized plots; EXPLORATORY/PENDING until the 10–20-task run.]]
+**Table 10 (replaced).** Exact-match mutual-exclusivity check on dev20 pools: all relation classes have `ρ̂<0` (same-model/cross-view −0.13, score-tied −0.18), P2's rejected set is empty; EXPLORATORY, no P1/P2/P3 claim (theory §4.8).
 
 ### 3.5 Budget-constrained coverage allocation (Theorem 5)
 
-Let `g_t(c)` be the probability that a pool at per-task compute `c` covers the truth; expected score is `Σ_t g_t(c_t)` under `Σ_t c_t ≤ C`. **Theorem 5.** (i) Identical concave `g_t` ⇒ uniform `c_t = C/T` is optimal (Jensen). (ii) Greedy marginal allocation is optimal: funded tasks share a common marginal gain. (iii) If margins are ordered by prior accuracy `p_t` (`p_s ≥ p_t ⇒ g'_s(c) ≥ g'_t(c)`), compute is monotone in `p_t` and a difficulty-threshold rule holds: only tasks above a budget-dependent cutoff `p*` receive compute, and `p*` rises as `C/T` shrinks. (iv) At saturation the marginal is zero (score sufficiency: extra compute adds only correlated candidates, Theorem 4), so excess is better reallocated; never-solvable tasks receive none.
+Let `g_t(c)` be the probability that a pool at per-task compute `c` covers the truth; expected score is `Σ_t g_t(c_t)` under `Σ_t c_t ≤ C`. **Theorem 5.** (i) Identical concave `g_t` ⇒ uniform `c_t = C/T` is optimal (Jensen). (ii) Greedy marginal allocation is optimal: funded tasks share a common marginal gain. (iii) If margins are ordered by prior accuracy `p_t` (`p_s ≥ p_t ⇒ g'_s(c) ≥ g'_t(c)`), compute is monotone in `p_t` and a difficulty-threshold rule holds: only tasks above a budget-dependent cutoff `p*` receive compute, and `p*` rises as `C/T` shrinks. (iv) At saturation the marginal is zero (coverage ceiling; under score sufficiency extra compute yields no newly identifiable candidates, Prop. 5), so excess is better reallocated; never-solvable tasks receive none.
 
 ### 3.6 Calibrated plug-in estimator
 
-Neither p_i nor ρ_ij is observable at submission time, so we estimate them in a frozen pipeline. (i) **p̂**: logistic regression [10] on frozen within-input features (score rank/z, log agreement, cluster mass, top-cluster, shape, model count), fit on a dev split only. (ii) **ρ̂**: per relation class from the dev co-failure statistic, clipped to [−0.95,0.99], with frozen pooling and a default for sparse classes. (iii) **Û**: the plug-in version of (4); attempt 1 is argmax p̂, attempt 2 maximizes Û over distinct grids. (iv) **Gate/fallback**: deploy only if dev cross-fit calibration has Brier ≤0.10, reliability slope in the code's valid range [0.2,5.0] (design target [0.7,1.3]) and an estimable relation class; otherwise use a no-calibration fallback (highest agreement, then a different grid). The claim is pre-registered at ≥+1.0 point over published top-2 with 80% paired-bootstrap CI lower bound >0 (2,000 resamples, seed 0), else negative/analysis [22].
+Neither p_i nor ρ_ij is observable, so we estimate them in a frozen pipeline. (i) **p̂**: logistic regression [10] on frozen within-input features (score rank, agreement, cluster mass, shape), fit on dev only. (ii) **ρ̂**: per relation class from the dev co-failure statistic, clipped to [−0.95,0.99], with frozen pooling and a default for sparse classes. (iii) **Û**: the plug-in version of (4); attempt 1 is argmax p̂, attempt 2 maximizes Û over distinct grids. (iv) **Gate/fallback**: deploy only if dev cross-fit calibration has Brier ≤0.10, reliability slope in the code's valid range [0.2,5.0] (design target [0.7,1.3]) and an estimable relation class; otherwise use a no-calibration fallback (highest agreement, then a different grid). The claim is pre-registered at ≥+1.0 point over published top-2 with 80% paired-bootstrap CI lower bound >0 (2,000 resamples, seed 0), else negative [22].
 
 ![Figure 4 — selection-rule schematic (toy values, illustrative)](figures/fig4_selection_schematic.png)
 
@@ -121,7 +121,7 @@ Neither p_i nor ρ_ij is observable at submission time, so we estimate them in a
 
 ### 3.7 TTT as amortized Bayesian adaptation
 
-Why are TTT pools plausible? Read ARC-SFT training as approximate posterior inference [13]: the parameters are a prior over task rules, and per-task TTT performs amortized Bayesian adaptation. With a Gaussian prior around the SFT optimum, a LoRA update θ_T=θ_SFT+BA is a low-rank posterior correction, and a PAC-Bayes sketch bounds expected per-task error by the prior's error plus √((KL(q_T‖p)+ln(2n_eff/δ))/2n_eff), with KL≈‖BA‖²/2σ², implying an interior optimum in rank/steps and larger gains where the prior is weakest. Test-time augmentation is an equivariance prior, valid only where the task rule commutes with the transform; the frozen κ_T proxy records when augmentation should help. It is a sketch, not a bound, and it explains why pools concentrate near truth and why errors correlate.
+Why are TTT pools plausible? Read ARC-SFT training as approximate posterior inference [13]: the parameters are a prior over task rules, and per-task TTT performs amortized Bayesian adaptation. A LoRA update is a low-rank posterior correction; a PAC-Bayes sketch predicts an interior optimum in rank/steps and larger gains where the prior is weakest. Test-time augmentation is an equivariance prior, valid only where the task rule commutes with the transform; the frozen κ_T proxy records this. It is a sketch, not a bound.
 
 
 
@@ -131,35 +131,58 @@ Why are TTT pools plausible? Read ARC-SFT training as approximate posterior infe
 
 ### 4.1 First submission attempt (errored)
 
-We entered the competition [15] with one notebook (MIT-0, offline rerun) for the 4×L4 regime: Qwen3-4B ARC-SFT, D4×S10 augmentation, per-task LoRA TTT, threshold-DFS decoding of 8 augmented views, NLL rescoring under fresh views, inverse-consensus aggregation, coverage-based two-attempt selection, and a schema-validated submission. The first rerun attempt, submission **57456856** (kernel v8; source `87ca30dd…`; competition packet `3774c892…`; S1/aug8 half-cost), was created 2026-10-21T00:01:15Z for the hidden rerun with a 41,400 s budget and the automatic per-task cap of 578 s if 240 tasks (1156 s if 120); hidden-set size unknown; local sample shape 240/259. Kaggle reports it **COMPLETE at ≈02:35 UTC after ≈2 h 34 min, with no publicScore** and errorDescription *"Your notebook hit an unhandled error while rerunning your code…"*. The verified cause is a rerun-only configuration bug: the rerun branch set `os.environ["ARC_BUDGET_S"] = str(11.5*3600)` = `"41400.0"`, and the run cell parsed it with `int("41400.0")` → `ValueError` before the `try/except`, so the notebook aborted immediately after writing modules; manual/dev runs used a different branch (`int(float(...))`) and passed. The ≈2 h 34 min to COMPLETE was queue time, not compute. The packet is hardened with int-typed budgets and defensive parses, no-raise validation, grid sanitization (colours, rectangle, dims ≤30; invalid → deterministic fallback), a final SAFETY cell for a complete hidden-shaped submission, externally-set challenge paths, and an independent rerun-simulation gate (`notebook/tools/gate_rerun_sim.py`) that executes the packet under `KAGGLE_IS_COMPETITION_RERUN=1` with injected fault modes (`none`/`invalid`/`missing`/`exception`, 120- and 240-task shapes) and requires zero exceptions plus valid output. Retry: hardened S1 packet, 2026-10-22T00:01Z [[V4-PEND: retry ref/status/score/date]]. **We claim no score for 57456856, or for the pipeline until a submission scores, and report this as an engineering failure mode, not model quality.**
+We entered [15] with one MIT-0 notebook (Qwen3-4B ARC-SFT, D4×S10 augmentation, per-task LoRA TTT, threshold-DFS decoding, NLL rescoring, coverage selection, schema validation). Submission 57456856 (kernel v8; packet `3774c892…`; S1/aug8) used the 41,400 s budget and 578 s/240-task cap (1156 s/120); hidden size unknown. Kaggle reports COMPLETE at ≈02:35 UTC after ≈2 h 34 min, **no publicScore**, errorDescription *"Your notebook hit an unhandled error while rerunning your code…"*. Cause: rerun branch `ARC_BUDGET_S="41400.0"` parsed by `int("41400.0")` → `ValueError` before try/except. The hardened packet adds int-typed/defensive parses, no-raise validation and a SAFETY cell; probe 57500870 scored 0.00. **We claim no score for 57456856 and report the failure as engineering, not model quality.**
 
-Because no score was produced, the rerun exposes no per-task outcomes or diagnostic; labeled diagnostics come from dev pools (§4.3) and third-party pools (§5). Table 9 records every attempt.
+Final hidden-test results (six scored submissions): **S5 16.25** (ref **57681632**, kernel v16; champion), **S6 15.42** (57716141), **S5_ens 15.42** (57752011), **S1 14.17** (57663405), **S5+LegC 14.17** (57785740), CPU probe **0.00** (57500870); plus one invalid-format attempt (57442788) and one rerun error (57456856, Table 9). No score exceeds 16.25. A reference public-notebook replication attempt reached **3/20** on dev20, below our S1 4/20, so the ~30 public-notebook band is external context, not a matched reproduction. The LegC verified-induction hybrid was **net-negative** on the hidden half (−2.08 vs S5) and was rejected. Compute quota was exhausted Oct 31–Nov 1, leaving no GPU for tuning; the Nov 2 final entry uses the best completed version (S5 v16) unless S5b beats 16.25. Half-cost configs truncate at the 578 s cap: these scores are far below the ~30 band, not SOTA.
 
-**Table 9. Submission ledger (one row per attempt; failures included).**
+57456856 exposes no per-task diagnostic; labeled diagnostics come from dev pools (§4.3) and third-party pools (§5). 
 
-| date (UTC) | ref | config (source / packet) | inputs | budget | runtime | status / publicScore | processed / truncation |
-|---|---|---|---|---|---|---|---|
-| 2026-10-21T00:01:15Z | **57456856** | kernel v8, `87ca30dd…` / `3774c892…`, S1 aug8, 4×L4 | hidden; sample shape 240 / 259 (size unknown, 120–240) | 41,400 s; cap 578 s if 240 (1156 s if 120) | ≈2 h 34 min incl. queue (error immediate; COMPLETE ≈02:35 UTC) | **unhandled error (rerun-only budget int parse)** — `ValueError` on `int("41400.0")`; no publicScore | not observable |
-| 2026-10-22T00:01 UTC | [[V4-PEND: retry ref]] | hardened packet [[V4-PEND: packet sha]], S1 aug8 | hidden (sample 240/259) | 41,400 s; cap 578 s if 240 (1156 s if 120) | [[V4-PEND: runtime]] | [[V4-PEND: status + publicScore]] | [[V4-PEND: processed]] |
+**Table 9. Submission ledger (all public-LB attempts; errors and misses included).**
+
+| date (UTC) | ref | config | LB | status / notes |
+|---|---|---|---|---|
+| 2026-10-20T14:56 | 57442788 | CPU-fallback insurance | — | invalid format |
+| 2026-10-21T00:01:15 | 57456856 | S1 v8, packet `3774c892…` | — | rerun-only `int("41400.0")` ValueError; no publicScore |
+| 2026-10-22T00:00:23 | 57500870 | S1 CPU-version probe | **0.00** | COMPLETE, no error |
+| 2026-10-26T10:45 | 57663405 | S1 v8 L4, packet `9060264c…` | **14.17** | COMPLETE, no error (≈14 h incl. queue) |
+| 2026-10-27T00:00:28 | 57681632 | **S5 v16 L4**, packet `6211b694…` | **16.25** | COMPLETE, no error — **champion** |
+| 2026-10-28T00:00:27 | 57716141 | S6 dual-config v22 | **15.42** | COMPLETE |
+| 2026-10-29T00:02:23 | 57752011 | S5_ens two-model v23 | **15.42** | COMPLETE |
+| 2026-10-30T00:02:21 | 57785740 | S5+LegC hybrid v25 | **14.17** | COMPLETE — LegC net-negative |
+| 2026-10-31 | — | (submission missed) | — | session gap; no ref |
+| 2026-11-01T00:10:23 | 57854697 | S5b v24, packet pending | pending | PENDING at freeze — last S5-family probe |
+
+Hidden-set size remains unknown; runtimes are queue time, not a size signal. Six scored entries; all scores are public-LB hidden-half results. Table 8's dev20 scores are public-eval-subset measurements, not hidden scores.
 
 ### 4.2 Hidden-test budget calibration
 
-Budget calibration is for completeness; the failed attempt was an immediate pre-compute `ValueError`, not budget exhaustion. Hidden size is unknown (120–240); for the 240/259 sample shape at 11.5 h, the four-worker budget is 41,400 s and the fair per-task cap is `dynamic_task_cap_s(11.5 h, 240 tasks, 4 workers) = 578 s at 240 tasks (1156 s if 120; 9.6/19.3 min), including a reserve. The cap truncates: exhausted tasks emit valid attempts with shortened TTT/decoding. The dev2 timings at aug8 were 202.51 and 238.12 s wall per task (train 53.0–144.4 s; decode 17.6–134.9 s), i.e. ≈220 s/task. Scaling to 240 tasks on four workers gives ≈3.7 h of TTT — 2.6× per-task headroom, ~7.8 h unused wall. Slack absorbs harder tasks, model load (106.9 s) and worker skew; we did not adapt the cap per task. The actual processed-task count and truncation behaviour are not observable from the public rerun interface [[V4-PEND: processed tasks / truncation if a rerun log is exposed]]. Figure 8 reserves this calibration and the §4.3 dev compute-accuracy points. Theorem 5 predicts compute beyond a coverage plateau is wasted; the dev20 ladder tests this (Table 11; EXPLORATORY/PENDING).
+Hidden size is unknown (120–240); for the 240/259 sample shape at 11.5 h, the four-worker budget is 41,400 s and the fair per-task cap is 578 s at 240 tasks (1156 s if 120; 9.6/19.3 min), including a reserve. The cap truncates attempts. Dev2 timings: ≈220 s/task (202.51/238.12 s). Scaling to 240 tasks on four workers gives ≈3.7 h of TTT — 2.6× per-task headroom, ~7.8 h unused wall. Slack absorbs harder tasks, model load (106.9 s) and worker skew. Processed-task count and truncation are not observable from the rerun interface. Figure 8 reserves this calibration and the §4.3 dev compute-accuracy points. Theorem 5 predicts compute beyond a coverage plateau is wasted; the dev20 ladder tests this (Table 11; EXPLORATORY/PENDING).
 
 ### 4.3 Compute-normalized dev evidence
 
-Table 8/Figure 8 reserve the post-10-24 dev sweep (aug8 measured, aug16, beam-2/4, P1; dev pass@2, wall/task, GPU-hours) [[V4-PEND: Table 8/Figure 8 values; status PENDING/EXPLORATORY, owner kaggle-runner]]. Dev2 pilot: 466.7 s wall, 106.9 s load, 15 candidates for 2/2 inputs, oracle 1/2, attempt 1 hit and attempt 2 added nothing — plumbing evidence, not accuracy. 
+On this single 20-task subset (no CI claim), the all-config union (incl. S5_ens) reaches 6/20 (30%) versus 4/20 for S1; four-config S1/S2/S5/S6 union 5/20. Dev2 pilot: 466.7 s wall, 106.9 s load, 15 candidates for 2/2 inputs, oracle 1/2 — plumbing evidence, not accuracy.
 
-[[V4-PEND: **Table 8 (reserved)** — compute-normalized ablation: config × {aug, beam, passes} → dev pass@2, wall/task, GPU-hours; status PENDING (post-Oct-24 dev sweep, owner kaggle-runner).]]
+**Table 8. dev20 sweep (eval20: 20 tasks / 32 inputs; L4×4; hardened packets).**
 
-[[V4-PEND: **Figure 8 (reserved)** — hidden-test budget calibration and dev compute-vs-accuracy points; asset `paper/figures/fig8_budget_accuracy.png` to generate when the dev sweep lands.]]
+| config | dev20 (task) | dev20 (input) | final LB | notes |
+|---|---|---|---|---|
+| S1 (hardened) | 4/20 = 20.0% | 6/32 = 18.8% | **14.17** | decode mean ≈235 s/task; 4 tasks capped |
+| S2 (aug16) | 2/20 = 10.0% | 5/32 = 15.6% | — | decode up to 618 s; truncation |
+| S5 (single) | 3/20 = 15.0% | 5/32 = 15.6% | **16.25** | champion |
+| S6 (v13; selection-bug) | 2/20 = 10.0% | 5/32 = 15.6% | **15.42** | pass@2 flagged; 4/20 oracle, usable |
+| all-config union | 6/20 = 30.0% | — | — | cand.-union incl. S5_ens; four-config 5/20 |
 
+![Figure 8 — final public-LB snapshot](figures/fig8_budget_accuracy.png)
+
+**Figure 8.** Final public-LB snapshot (2026-11-01T00:13Z): rank↔score anchors and our champion at rank 2414 / 3,572 (score 16.25). Public-half ranking only; external context, not a hidden-test or medal claim.
+
+**Table 11. Public-LB snapshot 2026-11-01T00:13:02Z.** 3,572 ranked teams; leader 88.06. Our row: `rank 2414 · "wen Chen" · TeamId 17156552 · score 16.25 · submissions 8 · last 2026-10-30 00:02:21` (three teams tied at 16.25, ranks 2412–2414; 67.5th percentile from top). Anchors: r30 68.06, r50 55.97, r100 38.33, r200 33.06, r500 31.81, r1000 30.97. The public LB displays our **best** score (16.25), not the last submission (v25 = 14.17): standings use best-of-submissions semantics, so the Nov 2 entry is only a safety copy for the last-submission rule. The ~30–31 notebook band is ≈ranks 500–1000 (top 14–28%); 16.25 is far below it — public-half ranking only; no medal/SOTA claim.
 
 ## 5. Empirical study: selection rules on third-party candidate pools
 
 ### 5.1 Sources, reproduction gates, and protocol
 
-Released third-party logs, not our decoder, bound the study: gains are pool-conditioned; sources are frozen and a failing gate excludes one. Table 3 gates: B's coverage summary (29 inputs; oracle 9/29; top-2 8/29) and A's upstream artifact (137/400 solved; 80/400 pass@2) both reproduce exactly. Rules in fixed order: duplicate, argmax, top2, cal_indep, coverage_optimal, oracle_any2 (ceiling), deployed on fit. Splits are task-level (B 9/11 tasks, 13/16 inputs; A 400/400); paired bootstrap over tasks (2,000 resamples, seed 0) [14] gives 80%/95% CIs; no refits after holdout.
+Released third-party logs bound the study: gains are pool-conditioned; sources are frozen and a failing gate excludes one. Table 3 gates: B's coverage summary (29 inputs; oracle 9/29; top-2 8/29) and A's artifact (137/400 solved; 80/400 pass@2) reproduce exactly. Rules: duplicate, argmax, top2, cal_indep, coverage_optimal, oracle_any2 (ceiling), deployed. Splits are task-level (B 9/11 tasks, 13/16 inputs; A 400/400); paired bootstrap over tasks (2,000 resamples, seed 0) [14] gives 80%/95% CIs; no refits after holdout.
 
 **Table 3. Reproduction gates (source-published metric vs our re-derivation).**
 
@@ -170,13 +193,13 @@ Released third-party logs, not our decoder, bound the study: gains are pool-cond
 
 ### 5.2 Pilot evidence on Dataset B
 
-B is the only public candidate-dump notebook; 20 tasks, pilot-only, holdout 16 inputs/11 tasks. Oracle 31.25% (5/16); every deployable rule (duplicate, argmax, top-2, cal_indep, coverage) also 31.25%, indistinguishable (80% CI [18.75,43.75]); headroom 0. Deployed fallback 25.00%, one below; no measurable effect at this N.
+B is the only public candidate-dump notebook; 20 tasks, pilot-only, holdout 16 inputs/11 tasks. Oracle 31.25% (5/16); every deployable rule (duplicate, argmax, top-2, cal_indep, coverage) also 31.25%, indistinguishable (80% CI [18.75,43.75]); headroom 0. Deployed fallback 25.00%.
 
 ### 5.3 The large replication and the simulated stress test
 
-A is claim-bearing: top-2 covers 80/400 (20.00%) vs 137/400 any-guess (34.25%). The result is a null: correctness is predictable but score-dominated; every calibrated rule trails top-2's 20.00%. Missed truths are far from the top (rank median 12), so re-ranking cannot recover them. Margin negative, gate fails → `DOWNGRADE_TO_ANALYSIS`; deployed fallback 19.25%; headroom real but unreachable; CompressARC [6] is ARC-AGI-1-era (hash-level pools).
+A is claim-bearing: top-2 covers 80/400 (20.00%) vs 137/400 any-guess (34.25%). The result is a null: correctness is predictable but score-dominated. Missed truths are far from the top (rank median 12). `DOWNGRADE_TO_ANALYSIS`; deployed fallback 19.25%; CompressARC [6] is ARC-AGI-1-era (hash-level pools).
 
-C isolates the estimator; a sanity check, not evidence: calibrated rules reach the oracle 41.67% (+18.33 pp, 95% CI [11.67, 25.0]; gate slope 0.025), and the deployed fallback coincides under a simulated consensus.
+C isolates the estimator; a sanity check, not evidence: calibrated rules reach the oracle 41.67% (+18.33 pp, 95% CI [11.67, 25.0]; gate slope 0.025).
 
 **Table 2. Frozen two-attempt rules on the three datasets (pass@2, %; 80% bootstrap CI in brackets; seed 0, 2,000 resamples; two decimals).**
 
@@ -192,7 +215,7 @@ C isolates the estimator; a sanity check, not evidence: calibrated rules reach t
 
 Cells are pass@2 from the frozen artifact `analysis/results/selection_benchmark.json` (sha256 `6c16abfef7f0efe3a1a6bbe9f6251c9aeef1893ee7b0f44fdfdb9c2eb34ab71a`; 80% CIs). C is simulated, not evidence about real solvers.
 
-The interpretation is **score sufficiency**: score ordering saturates recoverable coverage, so selection is not the bottleneck — generation is. Re-ranking never exceeds top-2's 20.00%, so the 14.25-point headroom is real but not separable from exposed metadata. Falsifiers: (F1) a calibrated rule beating the solver by ≥+1.0 point (80% CI lower >0); (F2) metadata exposing oracle-gap candidates; (F3) a multi-decoder union exceeding the noise band.
+**Score sufficiency** explains the null: score ordering saturates recoverable coverage, so selection is not the bottleneck — generation is; re-ranking never exceeds top-2's 20.00%, the 14.25-point headroom is real but not separable from exposed metadata. Falsifiers: (F1) a calibrated rule beating the solver by ≥+1.0 point (80% CI lower >0); (F2) metadata exposing oracle-gap candidates; (F3) a multi-decoder union exceeding noise.
 
 ![Figure 2 — rule comparison with confidence intervals](figures/fig2_selection_rules.png)
 
@@ -206,9 +229,9 @@ The interpretation is **score sufficiency**: score ordering saturates recoverabl
 
 ## 6. Data characterization and leakage audit
 
-We characterize ARC-AGI-2 data [20]: 1,000 training tasks (3,232 pairs, 1,076 inputs) and 120 evaluation tasks (358 pairs, 172 inputs); the repo mirror (167 inputs, five tasks differ) is not used for scores. A SHA-256 audit finds zero shared tasks, pairs and input grids between training and evaluation (eight input grids recur across training tasks).
+We characterize ARC-AGI-2 data [20]: 1,000 training tasks (3,232 pairs, 1,076 inputs) and 120 evaluation tasks (358 pairs, 172 inputs); the repo mirror (167 inputs) is not used for scores. A SHA-256 audit finds zero shared tasks, pairs and input grids between training and evaluation.
 
-Eight single-rule heuristics solve 1.6% of training, 1.5% of holdout and 0% of public evaluation. Evaluation is harder structurally — max grid dimension 21.95 vs 14.67 (p<0.001), 64% in the hardest heuristic-proxy quartile — and 54.5% of training vs 57.5% of evaluation tasks are same-size rewrites, then object and grid-panel manipulation.
+Heuristic baselines solve 1.6% training, 1.5% holdout and 0% eval; eval grids are larger (21.95 vs 14.67, p<0.001) and 54.5%/57.5% of train/eval tasks are same-size rewrites.
 
 **Table 6. Data-characterization summary (public ARC-AGI-2; unless noted).**
 
@@ -241,9 +264,9 @@ Eight single-rule heuristics solve 1.6% of training, 1.5% of holdout and 0% of p
 
 ## 7. Completeness: engineering and reproducibility
 
-The repository implements: loader/validator, D4×S10 augmentation, threshold-DFS decoding, rescoring, aggregation, coverage rules (§3), TTT and orchestration; offline dependencies come from a kernel mount, with no internet or API at rerun. Released under MIT-0; third-party components retain verified licences (ARC-AGI-2, model/Qwen3 Apache-2.0; CompressARC, arc-dsl MIT; Unsloth/transformers/peft Apache-2.0). Public notebooks are unlicensed, so methods are clean-room re-implemented and cited; a NOTICE records attributions. The `LICENSE` file must be switched to SPDX `MIT-0` before release — a repo-side action.
+The repository implements loader, augmentation, threshold-DFS decoding, rescoring, aggregation, coverage rules (§3), TTT and orchestration; it runs offline from a kernel mount. Released under MIT-0; third-party components retain licences (ARC-AGI-2, Qwen3, CompressARC, arc-dsl, Unsloth/peft). Notebook methods are clean-room re-implemented and cited; a NOTICE records attributions. The `LICENSE` file must switch to SPDX `MIT-0` before release.
 
-GPU fixes: Triton needs an explicit `TRITON_PTXAS_PATH=/usr/local/cuda/bin/ptxas` in the competition rerun shape (missing ptxas → zero candidates), and Hugging Face loading needs offline weights (`local_files_only`/mount). The packet pins source/hash, forces deterministic fallback if candidates are missing, and reverifies rerun shape; stable seeds/ordering and hash-only pool-v1 logs make runs re-analysable. Validation: 190 passing CPU tests (~26 s); a schema-valid fallback: the 167-input repo packet ran in 8.3 s on Kaggle, while the official 172-input repackaging measured 5.4 s locally (no Kaggle run) and scores 0/120 under the official rule — a safety net, not accuracy; TTT-path validation with a tiny Qwen model (dialect guard, LoRA, 2 steps, 8-view decode, selection, schema); and a CompressARC harness that re-derives bundled predictions and exports hash-level pools for Dataset A. 
+GPU fixes: Triton needs an explicit `TRITON_PTXAS_PATH=/usr/local/cuda/bin/ptxas` (missing ptxas → zero candidates), and Hugging Face loading needs offline weights (`local_files_only`/mount). The packet pins source/hash and forces deterministic fallback;  Validation: 190 passing CPU tests (~26 s); a schema-valid fallback: the 167-input packet ran in 8.3 s on Kaggle, while the official 172-input repackaging measured 5.4 s locally and scores 0/120 — a safety net, not accuracy; TTT-path validation with a tiny Qwen model (dialect guard, LoRA, 2 steps, 8-view decode, selection, schema); and a CompressARC harness that re-derives bundled predictions and exports hash-level pools for Dataset A. 
 
 **Table 5. System and reproducibility matrix.**
 
@@ -254,15 +277,18 @@ GPU fixes: Triton needs an explicit `TRITON_PTXAS_PATH=/usr/local/cuda/bin/ptxas
 | TTT path (tiny model) | tokenizer guard, LoRA, decode, selection, schema OK | measured |
 | GPU dev2 pilot | 2 tasks, 15 candidates, per-task walls 202.5/238.1 s, load 106.9 s | measured |
 | Engineering fixes | ptxas/HF-offline guards; void stale-packet run root-caused | measured |
-| First submission attempt | ref 57456856, S1/aug8, hidden size unknown (sample shape 240/259); errored on rerun (no score), hardened retry pending | measured failure |
+| First submission attempt | 57456856 errored (rerun-only budget parse); CPU-probe retry (57500870) publicScore 0.00 | measured failure |
+| First scored hidden run | **57663405**, S1 L4, COMPLETE **publicScore 14.17** (≈14 h incl. queue) | measured (scored) |
+| Best scored hidden run | **57681632**, S5 L4, COMPLETE **publicScore 16.25** (current best; +2.08 pp over S1) | measured (scored) |
+| S6 dual-config rerun | Oct 28 submission | PENDING |
 | CompressARC reproduction | 137/400 solved; 80/400 pass@2 | measured |
 
 
 ## 8. Public-solver landscape and what transfers
 
-Table 4 has ten notebooks [16–19]; nine cluster at 29.7–31.4 (context rows 29.17, 15.69). TRM [5], SOAR [7] and deep-ensemble uncertainty [11] are not evaluated.
+Table 4 has ten notebooks [16–19]; nine cluster at 29.7–31.4. TRM [5], SOAR [7], deep ensembles [11] are not evaluated.
 
-Official-label scores (`analysis/results/official_scores.json`) are partial reruns (vanductan 5/120 tasks; 8/172 inputs; others 2–4/120); released dumps validate (§5.1).
+Saved-artifact official-label scores are partial reruns (vanductan 5/120; 8/172; others 2–4/120).
 
 **Table 4. Public-solver landscape (dated reading 2026-10-18; displayed scores are secondary-source context).**
 
@@ -282,18 +308,18 @@ Official-label scores (`analysis/results/official_scores.json`) are partial reru
 
 ## 9. Limitations, ethics, and reproducibility
 
-The largest limitation is that our solver has **no scored hidden-test measurement**: the first rerun attempt (57456856) errored after ≈2 h 34 min with no publicScore, and a hardened retry is pending [[V4-PEND: retry outcome]]. No rerun log or per-task hidden observability exists, so variance, truncation and failure attribution cannot be reported; until a submission scores, accuracy rests on engineering status, with the platform-gated fallback if none materializes by 2026-11-02. Hidden-set size unknown (120–240). The selection claim remains a third-party-pool study with narrow conclusions, never leaderboard claims. B is tiny (29 inputs, 20 tasks), pilot-only, zero headroom; A is a different generation/representation with nearly all evaluation tasks overlapping ARC-AGI-2 training, so cannot support an OOD claim; C validates only estimator/implementation.
+The largest limitation is that our solver has **six scored hidden submissions** spanning **14.17–16.25** (champion S5 16.25), versus **20.0% task-level** on the 20-task public-eval subset — S1/S5 gaps ≈5.8/≈3.75 points consistent with half-cost truncation and subset noise, not distributional. Compute quota was exhausted Oct 31–Nov 1, leaving no GPU for further tuning; the ~30 public-notebook band is external context only. The first rerun (57456856) errored after ≈2 h 34 min with no publicScore; probe 57500870 scored 0.00. No per-task hidden observability exists, so variance cannot be reported. The selection claim remains a third-party-pool study with narrow conclusions; B is tiny (29 inputs/20 tasks), A overlaps ARC-AGI-2 training, C validates only estimator/implementation.
 
-The theory is bounded too: coverage identities are exact for Bernoulli correctness with stated correlations, but p̂ and ρ̂ are estimates whose errors flow into the decision; the gate is a guard, not a guarantee. The TTT discussion is a PAC-Bayes sketch, not a bound; κ_T is a proxy. Selection cannot repair a decoder: if truth is absent, no rule recovers it. 
+The theory is bounded: coverage identities are exact, but p̂ and ρ̂ are estimates; the gate is a guard, not a guarantee; the TTT discussion is a sketch. 
 
-All data are public (ARC Prize data, notebook outputs, CompressARC artifacts); no personal data, credentials or hidden-test information is used. Third-party artifacts are used with attribution; no third-party code was copied. The engineering record is included for reproducibility. Reproducibility depends on Appendix B artifacts and on the repository reaching a single consistent licence before release.
+All data are public (ARC Prize data, notebook outputs, CompressARC artifacts); no personal data, credentials or hidden-test information is used. Third-party artifacts are used with attribution; no third-party code was copied. Reproducibility depends on Appendix B artifacts and on the repository reaching a single consistent licence before release.
 
 
 ---
 
 ## 10. Conclusion
 
-Coverage is the right formalization for two-attempt selection: independent correctness makes top-2 optimal, correlated errors make a calibrated pair rule provably better, and Theorem 4 gives the correlation threshold at which diversification pays. The measured answer is a bounded negative: on real public solver pools the solver's own score ordering saturates recoverable coverage. On 400 CompressARC tasks top-2 covers 20.00% while the coverage rule covers 17.75%, against 34.25% oracle — 14.25 points exposed metadata cannot reach. The verdict is `DOWNGRADE_TO_ANALYSIS`; selection is not the bottleneck, candidate generation/coverage is. Transferables: the formalization, protocol, benchmark, data audit, implementation, real attempt and record — plus a falsification target: a pool with independent evidence, or features exposing oracle candidates the score hides.
+Coverage is the right formalization for two-attempt selection: independent correctness makes top-2 optimal, correlated errors make a calibrated pair rule provably better, and Theorem 4 gives the correlation threshold. The measured answer is a bounded negative: on real public pools the solver's score ordering saturates recoverable coverage. On 400 CompressARC tasks top-2 covers 20.00% while the coverage rule covers 17.75%, against 34.25% oracle — 14.25 points exposed metadata cannot reach. The verdict is `DOWNGRADE_TO_ANALYSIS`; selection is not the bottleneck, candidate generation/coverage is. Transferables: the formalization, protocol, benchmark, data audit, implementation, real attempt and record — plus a falsification target: a pool with independent evidence, or features exposing oracle candidates the score hides.
 
 
 ---
@@ -355,7 +381,7 @@ All numbers map to rows in `paper/evidence_table.md` (Plan C). Primary artifacts
 
 ## Appendix C — Platform-gated access log (summary)
 
-Thirteen Kaggle runs recorded between 14:00 and 15:06 UTC on 2026-10-18, all CPU-only: five environment/mount/tokenizer probes, three fallback-packet dry runs, five TTT-packet smoke runs. GPU entitlement was requested (`NvidiaL4`, `NvidiaTeslaT4`) and not granted; competition attach was rejected pending rules acceptance, which requires phone verification. Zero Kaggle GPU-hours were consumed; the frozen handoff bundle contains packet checksums and a resume procedure that regenerates packets before pushing. No hidden-test data was accessed and no GPU number appears in the paper. **V4 update (2026-10-21):** the competition gate cleared; kernel v8 dev2 pilot measured on 4×L4 (§4.3). Submission **57456856** reran (2026-10-21T00:01:15Z) and errored before compute: the rerun branch set `ARC_BUDGET_S="41400.0"` and the run cell's `int("41400.0")` raised `ValueError`; Kaggle's ≈2 h 34 min was queue time. Hardening (int-typed budgets, no-raise validation, sanitization, SAFETY cell, `gate_rerun_sim.py` fault-mode gate) is landing; retry 2026-10-22 [[V4-PEND: retry ref/status/score]].
+Thirteen Kaggle runs recorded between 14:00 and 15:06 UTC on 2026-10-18, all CPU-only: five environment/mount/tokenizer probes, three fallback-packet dry runs, five TTT-packet smoke runs. GPU entitlement was requested (`NvidiaL4`, `NvidiaTeslaT4`) and not granted; competition attach was rejected pending rules acceptance, which requires phone verification. Zero Kaggle GPU-hours were consumed; the frozen handoff bundle contains packet checksums and a resume procedure that regenerates packets before pushing. No hidden-test data was accessed and no GPU number appears in the paper. **V4 update (2026-10-21):** the competition gate cleared; kernel v8 dev2 pilot measured on 4×L4 (§4.3). Submission **57456856** reran (2026-10-21T00:01:15Z) and errored before compute: the rerun branch set `ARC_BUDGET_S="41400.0"` and the run cell's `int("41400.0")` raised `ValueError`; Kaggle's ≈2 h 34 min was queue time. Hardening (int-typed budgets, no-raise validation, sanitization, SAFETY cell, rerun-simulation gate) landed; probe 57500870 scored 0.00; L4 refs 57663405=14.17, 57681632=16.25; S6 15.42.
 
 ## Appendix D — Reproduction commands
 
@@ -386,8 +412,7 @@ top-1 duplicated, threshold-diversify (admit iff ρ̂_c < ρ* − δ), and the u
 Pre-registered predictions: **P1** admitted pairs beat their duplicate counterpart (paired Δ>0, 80% CI>0);
 **P2** rejected (score-tied) pairs do not (Δ≤0); **P3** predicted-vs-realized gain slope in [0.7,1.3].
 Falsifier: failure of P1, P2 or P3 falsifies the estimator/relation-class instantiation, never the algebra.
-The dev2 pool (2 tasks) is a PILOT only — fewer than 12 tasks, so no verdict; the 10–20-task run after the
-2026-10-24 quota refresh supplies Table 10 and Figure 9. Until then both are EXPLORATORY/PENDING.
+The dev20 pools (65 base tasks / 133 task-pools) were analyzed; exact-match exclusivity makes P1/P2/P3 untestable (theory §4.8): every class has ρ̂<0, so Table 10 is a prose check and Fig. 9 is omitted.
 
 ## Appendix F — Official competition data note
 
