@@ -41,6 +41,13 @@ Engine `out/verifier_search_eval.json` sha `493cc629d237d22d6f4d6ac273d942c27eaa
 | eval120 | 120 | 0 | 0 | 0.0% | 1.0 | 0.292 |
 | train control | 12 | 1 | 1 | 8.33% | 0.9167 | 0.1 |
 
+## Depth-3 subset (20 dev20 ids; NOT extrapolated to eval120)
+
+- engine: `out/verifier_search_eval20_d3.json` sha `90ea0206353f090457cc62268a67c7a9063c792de8e363aeb9948551707d7ce4`; max_depth=3, t3_beam=200, 1765.6 s serial
+- 20 tasks: accepted 0, unique 0, unique coverage 0.0%, impossibility certificates 1.0
+- g_V by depth {'1': 0.0, '2': 0.0, '3': 0.0}; F1b d3 INCONCLUSIVE (no unique-class tasks); F3 FAIL (acceptance flat across all depths)
+- **Interpretation:** measured on the 20-task dev20/joint subset only; not extrapolated to eval120.
+
 ## Null / control runs
 
 | run | n | accepted | unique | elapsed | note |

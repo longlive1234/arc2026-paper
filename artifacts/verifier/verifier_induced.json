@@ -271,6 +271,100 @@
    "n_unique_exact": 1
   }
  },
+ "d3_subset": {
+  "label": "d3 measured on 20 dev20 ids; not extrapolated to eval120",
+  "path": "out/verifier_search_eval20_d3.json",
+  "sha256": "90ea0206353f090457cc62268a67c7a9063c792de8e363aeb9948551707d7ce4",
+  "n_tasks": 20,
+  "task_ids": [
+   "16b78196",
+   "195c6913",
+   "21897d95",
+   "28a6681f",
+   "31f7f899",
+   "3a25b0d8",
+   "3e6067c3",
+   "4a21e3da",
+   "4c3d4a41",
+   "4e34c42c",
+   "581f7754",
+   "7b3084d4",
+   "80a900e0",
+   "88e364bc",
+   "a32d8b75",
+   "c7f57c3e",
+   "e3721c99",
+   "edb79dae",
+   "eee78d87",
+   "faa9f03d"
+  ],
+  "accepted_tasks": 0,
+  "unique_tasks": 0,
+  "unique_verified_correct": 0,
+  "unique_verified_coverage_pct": 0.0,
+  "top2_class_coverage_pct": 0.0,
+  "empty_acceptance_d3_frac": 1.0,
+  "mean_cpu_min": 1.468,
+  "gv_by_depth_pct": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 0.0
+  },
+  "F1b": {
+   "1": {
+    "depth": 1,
+    "n_unique": 0,
+    "n_exact": 0,
+    "phi": null,
+    "wilson80": [
+     null,
+     null
+    ],
+    "verdict": "INCONCLUSIVE (no unique-class tasks)",
+    "wrong_examples": []
+   },
+   "2": {
+    "depth": 2,
+    "n_unique": 0,
+    "n_exact": 0,
+    "phi": null,
+    "wilson80": [
+     null,
+     null
+    ],
+    "verdict": "INCONCLUSIVE (no unique-class tasks)",
+    "wrong_examples": []
+   },
+   "3": {
+    "depth": 3,
+    "n_unique": 0,
+    "n_exact": 0,
+    "phi": null,
+    "wilson80": [
+     null,
+     null
+    ],
+    "verdict": "INCONCLUSIVE (no unique-class tasks)",
+    "wrong_examples": []
+   }
+  },
+  "F3": {
+   "testable_tasks": 20,
+   "nestedness_violations": [],
+   "nestedness_ok": true,
+   "nestedness_truncated_tasks": [],
+   "growth_tasks": 0,
+   "growth_frac": 0.0,
+   "growth_examples": [],
+   "flat_tasks": 20,
+   "verdict": "FAIL (acceptance flat across all depths)"
+  },
+  "attempt1_precision": {
+   "n_unique_tasks": 0,
+   "n_unique_exact": 0
+  },
+  "note": "d3 measured on the 20 dev20 ids; NOT extrapolated to eval120"
+ },
  "ambiguity": {
   "0": 120
  },
