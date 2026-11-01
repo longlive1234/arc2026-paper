@@ -1,0 +1,356 @@
+{
+  "schema": "legc-llm-verifier/v1",
+  "model": "deepseek-chat",
+  "k": 4,
+  "temperature": 0.8,
+  "n_tasks": 20,
+  "accepted_tasks": 0,
+  "unique_tasks": 0,
+  "usage": {
+    "prompt_tokens": 139552,
+    "completion_tokens": 69212
+  },
+  "elapsed_s": 57.2,
+  "tasks": [
+    {
+      "task_id": "0934a4d8",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 37.7,
+      "usage": {
+        "prompt_tokens": 10148,
+        "completion_tokens": 3973
+      },
+      "errors": []
+    },
+    {
+      "task_id": "135a2760",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 28.9,
+      "usage": {
+        "prompt_tokens": 5972,
+        "completion_tokens": 3672
+      },
+      "errors": []
+    },
+    {
+      "task_id": "136b0064",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 29.6,
+      "usage": {
+        "prompt_tokens": 4952,
+        "completion_tokens": 2896
+      },
+      "errors": []
+    },
+    {
+      "task_id": "13e47133",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 30.5,
+      "usage": {
+        "prompt_tokens": 8732,
+        "completion_tokens": 4233
+      },
+      "errors": []
+    },
+    {
+      "task_id": "142ca369",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 29.4,
+      "usage": {
+        "prompt_tokens": 7764,
+        "completion_tokens": 3815
+      },
+      "errors": []
+    },
+    {
+      "task_id": "16b78196",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 31.5,
+      "usage": {
+        "prompt_tokens": 9544,
+        "completion_tokens": 4400
+      },
+      "errors": []
+    },
+    {
+      "task_id": "16de56c4",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 26.7,
+      "usage": {
+        "prompt_tokens": 4924,
+        "completion_tokens": 3452
+      },
+      "errors": []
+    },
+    {
+      "task_id": "1818057f",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 17.5,
+      "usage": {
+        "prompt_tokens": 5528,
+        "completion_tokens": 1706
+      },
+      "errors": []
+    },
+    {
+      "task_id": "195c6913",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 31.0,
+      "usage": {
+        "prompt_tokens": 10972,
+        "completion_tokens": 3650
+      },
+      "errors": []
+    },
+    {
+      "task_id": "1ae2feb7",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 31.8,
+      "usage": {
+        "prompt_tokens": 5648,
+        "completion_tokens": 4400
+      },
+      "errors": []
+    },
+    {
+      "task_id": "20270e3b",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 37.0,
+      "usage": {
+        "prompt_tokens": 4548,
+        "completion_tokens": 4400
+      },
+      "errors": []
+    },
+    {
+      "task_id": "20a9e565",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 24.4,
+      "usage": {
+        "prompt_tokens": 10008,
+        "completion_tokens": 2861
+      },
+      "errors": []
+    },
+    {
+      "task_id": "21897d95",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 24.0,
+      "usage": {
+        "prompt_tokens": 7412,
+        "completion_tokens": 2857
+      },
+      "errors": []
+    },
+    {
+      "task_id": "221dfab4",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 25.1,
+      "usage": {
+        "prompt_tokens": 9476,
+        "completion_tokens": 3249
+      },
+      "errors": []
+    },
+    {
+      "task_id": "247ef758",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 26.3,
+      "usage": {
+        "prompt_tokens": 5500,
+        "completion_tokens": 3483
+      },
+      "errors": []
+    },
+    {
+      "task_id": "269e22fb",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 26.8,
+      "usage": {
+        "prompt_tokens": 7844,
+        "completion_tokens": 3570
+      },
+      "errors": []
+    },
+    {
+      "task_id": "271d71e2",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 33.6,
+      "usage": {
+        "prompt_tokens": 5744,
+        "completion_tokens": 3143
+      },
+      "errors": []
+    },
+    {
+      "task_id": "28a6681f",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 18.9,
+      "usage": {
+        "prompt_tokens": 4416,
+        "completion_tokens": 1969
+      },
+      "errors": []
+    },
+    {
+      "task_id": "291dc1e1",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 23.7,
+      "usage": {
+        "prompt_tokens": 5496,
+        "completion_tokens": 3083
+      },
+      "errors": []
+    },
+    {
+      "task_id": "2b83f449",
+      "n_samples": 4,
+      "n_codes": 4,
+      "n_accepted": 0,
+      "n_classes": 0,
+      "unique": false,
+      "predictions": [],
+      "classes": [],
+      "depth_solved": null,
+      "elapsed_s": 32.1,
+      "usage": {
+        "prompt_tokens": 4924,
+        "completion_tokens": 4400
+      },
+      "errors": []
+    }
+  ]
+}

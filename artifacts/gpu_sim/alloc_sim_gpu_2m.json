@@ -1,0 +1,57 @@
+{
+  "n_tasks": 2000000,
+  "budget": 50.0,
+  "device": "cuda",
+  "identifiable_fraction": 0.3494485020637512,
+  "mean_delta": 0.26031594220471127,
+  "mean_tau": 0.8351371324493662,
+  "budget_ladder": {
+    "C=50": {
+      "uniform": 4.188397156099305e-05,
+      "waterfilling_true_delta": 0.000370297139405946,
+      "waterfilling_pilot_delta": 0.0003117670552354022,
+      "waterfilling_verifier_ceiling": 0.0003117670552354006
+    },
+    "C=100": {
+      "uniform": 8.376355676091957e-05,
+      "waterfilling_true_delta": 0.0006662491814362814,
+      "waterfilling_pilot_delta": 0.0005731356210278171,
+      "waterfilling_verifier_ceiling": 0.0005731356210278147
+    },
+    "C=250": {
+      "uniform": 0.0002093760020354335,
+      "waterfilling_true_delta": 0.0014184201090028659,
+      "waterfilling_pilot_delta": 0.0012445343342463938,
+      "waterfilling_verifier_ceiling": 0.0012445343342463982
+    },
+    "C=500": {
+      "uniform": 0.0004186424234244739,
+      "waterfilling_true_delta": 0.0024781323991197738,
+      "waterfilling_pilot_delta": 0.002194044139141393,
+      "waterfilling_verifier_ceiling": 0.0021940441391413855
+    },
+    "C=1000": {
+      "uniform": 0.0008368469156216681,
+      "waterfilling_true_delta": 0.004283376780097355,
+      "waterfilling_pilot_delta": 0.0038210023140476945,
+      "waterfilling_verifier_ceiling": 0.0038210023140477054
+    },
+    "C=2500": {
+      "uniform": 0.002088840608820812,
+      "waterfilling_true_delta": 0.008690103218595535,
+      "waterfilling_pilot_delta": 0.007823940647638609,
+      "waterfilling_verifier_ceiling": 0.007823940647638632
+    },
+    "C=5000": {
+      "uniform": 0.004166810669380103,
+      "waterfilling_true_delta": 0.014660218384177887,
+      "waterfilling_pilot_delta": 0.013290110730970953,
+      "waterfilling_verifier_ceiling": 0.013290110730970923
+    }
+  },
+  "limit_label_free": 0.7396840577952887,
+  "limit_verifier_ceiling": 1.0,
+  "limit_gap": 0.2603159422047113,
+  "predicted_limit_gap_mean_delta": 0.26031594220471127,
+  "elapsed_s": 3.62
+}

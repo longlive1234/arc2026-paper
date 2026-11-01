@@ -1,0 +1,57 @@
+{
+  "n_tasks": 100000,
+  "budget": 50.0,
+  "device": "cpu",
+  "identifiable_fraction": 0.35097000002861023,
+  "mean_delta": 0.2592693781197029,
+  "mean_tau": 0.8319934354875982,
+  "budget_ladder": {
+    "C=50": {
+      "uniform": 0.0008382195036948264,
+      "waterfilling_true_delta": 0.0042340819024176074,
+      "waterfilling_pilot_delta": 0.003790191473893155,
+      "waterfilling_verifier_ceiling": 0.003790191473893167
+    },
+    "C=100": {
+      "uniform": 0.00167470057390943,
+      "waterfilling_true_delta": 0.007260195634933337,
+      "waterfilling_pilot_delta": 0.006541399846278344,
+      "waterfilling_verifier_ceiling": 0.00654139984627836
+    },
+    "C=250": {
+      "uniform": 0.004173773894712986,
+      "waterfilling_true_delta": 0.014581965711693621,
+      "waterfilling_pilot_delta": 0.013229195995427025,
+      "waterfilling_verifier_ceiling": 0.01322919599542706
+    },
+    "C=500": {
+      "uniform": 0.008304689413097647,
+      "waterfilling_true_delta": 0.024385200883466168,
+      "waterfilling_pilot_delta": 0.022273903332499335,
+      "waterfilling_verifier_ceiling": 0.02227390333249938
+    },
+    "C=1000": {
+      "uniform": 0.016440877963441253,
+      "waterfilling_true_delta": 0.04024780764963328,
+      "waterfilling_pilot_delta": 0.037019442086530026,
+      "waterfilling_verifier_ceiling": 0.03701944208653011
+    },
+    "C=2500": {
+      "uniform": 0.0398938926607504,
+      "waterfilling_true_delta": 0.0761393935261761,
+      "waterfilling_pilot_delta": 0.0708864081858985,
+      "waterfilling_verifier_ceiling": 0.07088640818589861
+    },
+    "C=5000": {
+      "uniform": 0.0760919189298649,
+      "waterfilling_true_delta": 0.12056795220242054,
+      "waterfilling_pilot_delta": 0.11335703879738024,
+      "waterfilling_verifier_ceiling": 0.11335703879738042
+    }
+  },
+  "limit_label_free": 0.7407306218802971,
+  "limit_verifier_ceiling": 1.0,
+  "limit_gap": 0.25926937811970285,
+  "predicted_limit_gap_mean_delta": 0.2592693781197029,
+  "elapsed_s": 11.41
+}

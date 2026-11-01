@@ -1,0 +1,771 @@
+{
+ "schema": "verifier-induced-v1",
+ "engine_path": "code/lab/out/verifier_search_eval.json",
+ "engine_sha256": "923875a94ae02a7fe3aec6dd7f548e69feb9166129cca6f529026bfdf5a41ec0",
+ "labels": {
+  "path": "data/comp/arc-agi_evaluation_solutions.json",
+  "sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
+  "usage": "evaluation only; labels never enter the search"
+ },
+ "meta": {
+  "script": "code/lab/verifier_search.py",
+  "reference_dsl": "reference/arc_induction_v2.py::RUNTIME_CODE",
+  "dsl_functions": 46,
+  "generated_utc": "2026-11-01T08:07:24Z",
+  "split": "eval",
+  "limit": 0
+ },
+ "engine_config": {
+  "tasks": "eval",
+  "limit": 0,
+  "out": "out/verifier_search_eval.json",
+  "workers": 56,
+  "max_depth": 2,
+  "t3_beam": 0,
+  "atom_cap": 1800,
+  "timeout": 1.0
+ },
+ "engine_wall_s": 456.7,
+ "engine_summary": {
+  "n_tasks": 120,
+  "solved_tasks": 0,
+  "solve_rate": 0.0,
+  "coverage_unique": 0,
+  "coverage_rate": 0.0,
+  "attempt1_precision": 0.0,
+  "attempt1_grids": 0,
+  "attempt1_hits": 0,
+  "per_depth": {
+   "none": {
+    "tasks": 120,
+    "solved": 0
+   }
+  },
+  "dsl_class": "T0 identity; T1 single LegC atom with bounded parameter sweeps; T2 A(B(g)); T3 beam A(B(C(g)))."
+ },
+ "nulls": {
+  "learned_rules": {
+   "path": "code/lab/out/learned_rules_eval.json",
+   "sha256": "e041817672670e22508dc0d6080587bd6a47f2fec5d4a3328d4dcbd35ea53eef",
+   "description": "learned-rule families",
+   "schema": "learned-rules/v1",
+   "n_tasks": 120,
+   "accepted_tasks": 0,
+   "unique_tasks": 0,
+   "elapsed_s": 0.3,
+   "usage": null,
+   "predictions_grids": 0,
+   "model": null,
+   "k": null
+  },
+  "llm_chat20": {
+   "path": "code/lab/out/legc_llm_chat20.json",
+   "sha256": "50f59859ed5279c215f93761d63e427864b8540d6c7de8bcca9d623a04035832",
+   "description": "DeepSeek-chat k=4, 20 eval tasks",
+   "schema": "legc-llm-verifier/v1",
+   "n_tasks": 20,
+   "accepted_tasks": 0,
+   "unique_tasks": 0,
+   "elapsed_s": 57.2,
+   "usage": {
+    "prompt_tokens": 139552,
+    "completion_tokens": 69212
+   },
+   "predictions_grids": 0,
+   "model": "deepseek-chat",
+   "k": 4
+  },
+  "llm_reasoner10": {
+   "path": "code/lab/out/legc_llm_reasoner10.json",
+   "sha256": "f20b120f4d732959d6e624345eb586ceec8164d725e4d879c203b4ea1677f525",
+   "description": "DeepSeek-reasoner k=3, 10 tasks",
+   "schema": "legc-llm-verifier/v1",
+   "n_tasks": 10,
+   "accepted_tasks": 0,
+   "unique_tasks": 0,
+   "elapsed_s": 266.3,
+   "usage": {
+    "prompt_tokens": 56418,
+    "completion_tokens": 240000
+   },
+   "predictions_grids": 0,
+   "model": "deepseek-reasoner",
+   "k": 3,
+   "infrastructure_null": true,
+   "reason": "every completion truncated at token cap; recorded as infrastructure null, not evidence about verifier capability"
+  }
+ },
+ "max_depth_measured": 2,
+ "full_eval": {
+  "n_engine_tasks": 120,
+  "n_scored_eval_tasks": 120,
+  "n_official_eval_tasks": 120,
+  "n_unique_verified_correct": 0,
+  "unique_verified_coverage_pct": 0.0,
+  "top2_class_coverage_pct": 0.0,
+  "n_classes_histogram": {
+   "0": 120
+  },
+  "empty_acceptance_d3_count": 120,
+  "total_cpu_min": 334.66,
+  "mean_cpu_min": 2.789,
+  "depth_counts": {
+   "0": 0,
+   "1": 0,
+   "2": 0,
+   "3": 0
+  },
+  "attempt1_precision": {
+   "n_unique_tasks": 0,
+   "n_unique_exact": 0
+  },
+  "empty_acceptance_d3_frac": 1.0,
+  "accepted_tasks": 0,
+  "unique_tasks": 0,
+  "certificate_fraction": 1.0
+ },
+ "F1a": {
+  "n_tasks_with_field": 0,
+  "total_violations": null,
+  "n_tasks_with_accepted": 0,
+  "verdict": "PASS (vacuous: no accepted programs to re-verify)"
+ },
+ "F1b": {
+  "1": {
+   "depth": 1,
+   "n_unique": 0,
+   "n_exact": 0,
+   "phi": null,
+   "wilson80": [
+    null,
+    null
+   ],
+   "verdict": "INCONCLUSIVE (no unique-class tasks)",
+   "wrong_examples": []
+  },
+  "2": {
+   "depth": 2,
+   "n_unique": 0,
+   "n_exact": 0,
+   "phi": null,
+   "wilson80": [
+    null,
+    null
+   ],
+   "verdict": "INCONCLUSIVE (no unique-class tasks)",
+   "wrong_examples": []
+  },
+  "3": {
+   "depth": 3,
+   "n_unique": 0,
+   "n_exact": 0,
+   "phi": null,
+   "wilson80": [
+    null,
+    null
+   ],
+   "verdict": "INCONCLUSIVE (no unique-class tasks)",
+   "wrong_examples": []
+  }
+ },
+ "f1b_depth_status": {
+  "1": "measured",
+  "2": "measured",
+  "3": "not measured (max_depth=2)"
+ },
+ "cost_curve": [
+  {
+   "depth": 0,
+   "coverage_pct": 0.0,
+   "cpu_min": 0.0
+  },
+  {
+   "depth": 1,
+   "coverage_pct": 0.0,
+   "cpu_min": 15.53,
+   "marginal_gain_pp_per_cpu_min": 0.0
+  },
+  {
+   "depth": 2,
+   "coverage_pct": 0.0,
+   "cpu_min": 334.63,
+   "marginal_gain_pp_per_cpu_min": 0.0
+  },
+  {
+   "depth": 3,
+   "coverage_pct": 0.0,
+   "cpu_min": 334.63,
+   "marginal_gain_pp_per_cpu_min": null
+  }
+ ],
+ "train_control": {
+  "path": "code/lab/out/verifier_search_train12.json",
+  "sha256": "5a36461bd7ace54d055bbb4be27b7f499a441fae3a59cdb959fd3330aa6553d7",
+  "n_tasks": 12,
+  "accepted_tasks": 1,
+  "unique_tasks": 1,
+  "unique_verified_correct": 1,
+  "unique_verified_coverage_pct": 8.33,
+  "top2_class_coverage_pct": 8.33,
+  "empty_acceptance_d3_frac": 0.9167,
+  "mean_cpu_min": 0.1,
+  "gv_by_depth_pct": {
+   "0": 0.0,
+   "1": 0.0,
+   "2": 8.33,
+   "3": 8.33
+  },
+  "F1b": {
+   "1": {
+    "depth": 1,
+    "n_unique": 0,
+    "n_exact": 0,
+    "phi": null,
+    "wilson80": [
+     null,
+     null
+    ],
+    "verdict": "INCONCLUSIVE (no unique-class tasks)",
+    "wrong_examples": []
+   },
+   "2": {
+    "depth": 2,
+    "n_unique": 1,
+    "n_exact": 1,
+    "phi": 1.0,
+    "wilson80": [
+     0.3784,
+     1
+    ],
+    "verdict": "INCONCLUSIVE",
+    "wrong_examples": []
+   },
+   "3": {
+    "depth": 3,
+    "n_unique": 0,
+    "n_exact": 0,
+    "phi": null,
+    "wilson80": [
+     null,
+     null
+    ],
+    "verdict": "INCONCLUSIVE (no unique-class tasks)",
+    "wrong_examples": []
+   }
+  },
+  "F3": {
+   "testable_tasks": 12,
+   "nestedness_violations": [],
+   "nestedness_ok": true,
+   "nestedness_truncated_tasks": [],
+   "growth_tasks": 1,
+   "growth_frac": 0.0833,
+   "growth_examples": [
+    "0520fde7"
+   ],
+   "flat_tasks": 11,
+   "verdict": "INCONCLUSIVE (<20 testable tasks)"
+  },
+  "attempt1_precision": {
+   "n_unique_tasks": 1,
+   "n_unique_exact": 1
+  }
+ },
+ "ambiguity": {
+  "0": 120
+ },
+ "F3": {
+  "testable_tasks": 120,
+  "nestedness_violations": [],
+  "nestedness_ok": true,
+  "nestedness_truncated_tasks": [],
+  "growth_tasks": 0,
+  "growth_frac": 0.0,
+  "growth_examples": [],
+  "flat_tasks": 120,
+  "verdict": "FAIL (acceptance flat across all depths)",
+  "max_depth_measured": 2,
+  "depth3_status": "not measured (max_depth=2)"
+ },
+ "joint_20": {
+  "S1": {
+   "n_tasks": 20,
+   "task_ids": [
+    "16b78196",
+    "195c6913",
+    "21897d95",
+    "28a6681f",
+    "31f7f899",
+    "3a25b0d8",
+    "3e6067c3",
+    "4a21e3da",
+    "4c3d4a41",
+    "4e34c42c",
+    "581f7754",
+    "7b3084d4",
+    "80a900e0",
+    "88e364bc",
+    "a32d8b75",
+    "c7f57c3e",
+    "e3721c99",
+    "edb79dae",
+    "eee78d87",
+    "faa9f03d"
+   ],
+   "verifier_only": 0,
+   "verifier_only_pct": 0.0,
+   "ttt_top2": 4,
+   "ttt_top2_pct": 20.0,
+   "hybrid": 4,
+   "hybrid_pct": 20.0,
+   "grid_overlap_rate": 0.0,
+   "f2": {
+    "mean_H_minus_V_pp": 20.0,
+    "ci80_H_minus_V_pp": [
+     10.0,
+     30.0
+    ],
+    "mean_H_minus_T_pp": 0.0,
+    "ci80_H_minus_T_pp": [
+     0.0,
+     0.0
+    ],
+    "verdict": "FAIL"
+   },
+   "per_task": [
+    {
+     "task_id": "16b78196",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "195c6913",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "21897d95",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "28a6681f",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "31f7f899",
+     "yV": false,
+     "yT": true,
+     "yH": true,
+     "overlap": false
+    },
+    {
+     "task_id": "3a25b0d8",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "3e6067c3",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "4a21e3da",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "4c3d4a41",
+     "yV": false,
+     "yT": true,
+     "yH": true,
+     "overlap": false
+    },
+    {
+     "task_id": "4e34c42c",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "581f7754",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "7b3084d4",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "80a900e0",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "88e364bc",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "a32d8b75",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "c7f57c3e",
+     "yV": false,
+     "yT": true,
+     "yH": true,
+     "overlap": false
+    },
+    {
+     "task_id": "e3721c99",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "edb79dae",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "eee78d87",
+     "yV": false,
+     "yT": true,
+     "yH": true,
+     "overlap": false
+    },
+    {
+     "task_id": "faa9f03d",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    }
+   ]
+  },
+  "S5": {
+   "n_tasks": 20,
+   "task_ids": [
+    "16b78196",
+    "195c6913",
+    "21897d95",
+    "28a6681f",
+    "31f7f899",
+    "3a25b0d8",
+    "3e6067c3",
+    "4a21e3da",
+    "4c3d4a41",
+    "4e34c42c",
+    "581f7754",
+    "7b3084d4",
+    "80a900e0",
+    "88e364bc",
+    "a32d8b75",
+    "c7f57c3e",
+    "e3721c99",
+    "edb79dae",
+    "eee78d87",
+    "faa9f03d"
+   ],
+   "verifier_only": 0,
+   "verifier_only_pct": 0.0,
+   "ttt_top2": 3,
+   "ttt_top2_pct": 15.0,
+   "hybrid": 3,
+   "hybrid_pct": 15.0,
+   "grid_overlap_rate": 0.0,
+   "f2": {
+    "mean_H_minus_V_pp": 15.0,
+    "ci80_H_minus_V_pp": [
+     5.0,
+     25.0
+    ],
+    "mean_H_minus_T_pp": 0.0,
+    "ci80_H_minus_T_pp": [
+     0.0,
+     0.0
+    ],
+    "verdict": "FAIL"
+   },
+   "per_task": [
+    {
+     "task_id": "16b78196",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "195c6913",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "21897d95",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "28a6681f",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "31f7f899",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "3a25b0d8",
+     "yV": false,
+     "yT": true,
+     "yH": true,
+     "overlap": false
+    },
+    {
+     "task_id": "3e6067c3",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "4a21e3da",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "4c3d4a41",
+     "yV": false,
+     "yT": true,
+     "yH": true,
+     "overlap": false
+    },
+    {
+     "task_id": "4e34c42c",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "581f7754",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "7b3084d4",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "80a900e0",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "88e364bc",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "a32d8b75",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "c7f57c3e",
+     "yV": false,
+     "yT": true,
+     "yH": true,
+     "overlap": false
+    },
+    {
+     "task_id": "e3721c99",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "edb79dae",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "eee78d87",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "faa9f03d",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    }
+   ]
+  },
+  "S5_ens": {
+   "n_tasks": 8,
+   "task_ids": [
+    "28a6681f",
+    "31f7f899",
+    "4c3d4a41",
+    "581f7754",
+    "7b3084d4",
+    "c7f57c3e",
+    "eee78d87",
+    "faa9f03d"
+   ],
+   "verifier_only": 0,
+   "verifier_only_pct": 0.0,
+   "ttt_top2": 2,
+   "ttt_top2_pct": 25.0,
+   "hybrid": 2,
+   "hybrid_pct": 25.0,
+   "grid_overlap_rate": 0.0,
+   "f2": {
+    "mean_H_minus_V_pp": 25.0,
+    "ci80_H_minus_V_pp": [
+     0.0,
+     50.0
+    ],
+    "mean_H_minus_T_pp": 0.0,
+    "ci80_H_minus_T_pp": [
+     0.0,
+     0.0
+    ],
+    "verdict": "FAIL"
+   },
+   "per_task": [
+    {
+     "task_id": "28a6681f",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "31f7f899",
+     "yV": false,
+     "yT": true,
+     "yH": true,
+     "overlap": false
+    },
+    {
+     "task_id": "4c3d4a41",
+     "yV": false,
+     "yT": true,
+     "yH": true,
+     "overlap": false
+    },
+    {
+     "task_id": "581f7754",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "7b3084d4",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "c7f57c3e",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "eee78d87",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    },
+    {
+     "task_id": "faa9f03d",
+     "yV": false,
+     "yT": false,
+     "yH": false,
+     "overlap": false
+    }
+   ]
+  }
+ },
+ "F2": {
+  "mean_H_minus_V_pp": 20.0,
+  "ci80_H_minus_V_pp": [
+   10.0,
+   30.0
+  ],
+  "mean_H_minus_T_pp": 0.0,
+  "ci80_H_minus_T_pp": [
+   0.0,
+   0.0
+  ],
+  "verdict": "FAIL"
+ },
+ "honesty": "Public eval120 only, not hidden. Labels used for evaluation only; verifier search is label-free. This is not a submitted competition entry. TTT pools are 20-task dev20 subsets, so the joint/hybrid table is exploratory; full-eval verifier numbers are separate. Attempt-2 rule is frozen as in theory_v6 \u00a75."
+}

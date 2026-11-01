@@ -1,0 +1,845 @@
+{
+ "meta": {
+  "script": "code/lab/verifier_search.py",
+  "reference_dsl": "reference/arc_induction_v2.py::RUNTIME_CODE",
+  "dsl_functions": 46,
+  "generated_utc": "2026-11-01T08:14:04Z",
+  "split": "train",
+  "limit": 12
+ },
+ "config": {
+  "tasks": "train",
+  "limit": 12,
+  "out": "code/lab/out/verifier_search_train12.json",
+  "workers": 1,
+  "max_depth": 2,
+  "t3_beam": 0,
+  "atom_cap": 1800,
+  "timeout": 1.0
+ },
+ "wall_s": 72.1,
+ "n_tasks": 12,
+ "summary": {
+  "n_tasks": 12,
+  "solved_tasks": 1,
+  "solve_rate": 0.0833,
+  "coverage_unique": 1,
+  "coverage_rate": 0.0833,
+  "attempt1_precision": 1.0,
+  "attempt1_grids": 1,
+  "attempt1_hits": 1,
+  "per_depth": {
+   "none": {
+    "tasks": 11,
+    "solved": 0
+   },
+   "2": {
+    "tasks": 1,
+    "solved": 1
+   }
+  },
+  "dsl_class": "T0 identity; T1 single LegC atom with bounded parameter sweeps; T2 A(B(g)); T3 beam A(B(C(g)))."
+ },
+ "tasks": [
+  {
+   "task_id": "00576224",
+   "tid": "00576224",
+   "n_accepted": 0,
+   "n_classes": 0,
+   "predictions": [],
+   "class_predictions": [],
+   "unique": false,
+   "unique_flag": false,
+   "depth_solved": null,
+   "elapsed": 0.375,
+   "cert_impossible_depth": 2,
+   "certificate": {
+    "type": "impossibility",
+    "max_depth": 2,
+    "dsl_class": "T0 identity; T1 single LegC atom (bounded parameter sweeps); T2 A(B(g)); T3 beam A(B(C(g))).",
+    "n_tested": 763,
+    "note": "exhaustive over the bounded parameter grid for this task, not a proof over the full DSL"
+   },
+   "ambiguity_predictions": [],
+   "accepted_by_depth": {
+    "1": [],
+    "2": []
+   },
+   "stages": {
+    "1": {
+     "depth": 1,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 175,
+      "elapsed": 0.019,
+      "n_atoms": 287,
+      "n_distinct_behaviours": 174
+     }
+    },
+    "2": {
+     "depth": 2,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 588,
+      "elapsed": 0.355,
+      "n_accepted": 0
+     }
+    }
+   },
+   "class_ids": [],
+   "class_sizes": [],
+   "train_violations": null,
+   "n_tested": 763,
+   "train_pairs": 2,
+   "test_inputs": 1,
+   "dsl_functions": 46
+  },
+  {
+   "task_id": "007bbfb7",
+   "tid": "007bbfb7",
+   "n_accepted": 0,
+   "n_classes": 0,
+   "predictions": [],
+   "class_predictions": [],
+   "unique": false,
+   "unique_flag": false,
+   "depth_solved": null,
+   "elapsed": 0.358,
+   "cert_impossible_depth": 2,
+   "certificate": {
+    "type": "impossibility",
+    "max_depth": 2,
+    "dsl_class": "T0 identity; T1 single LegC atom (bounded parameter sweeps); T2 A(B(g)); T3 beam A(B(C(g))).",
+    "n_tested": 616,
+    "note": "exhaustive over the bounded parameter grid for this task, not a proof over the full DSL"
+   },
+   "ambiguity_predictions": [],
+   "accepted_by_depth": {
+    "1": [],
+    "2": []
+   },
+   "stages": {
+    "1": {
+     "depth": 1,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 194,
+      "elapsed": 0.028,
+      "n_atoms": 278,
+      "n_distinct_behaviours": 193
+     }
+    },
+    "2": {
+     "depth": 2,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 422,
+      "elapsed": 0.329,
+      "n_accepted": 0
+     }
+    }
+   },
+   "class_ids": [],
+   "class_sizes": [],
+   "train_violations": null,
+   "n_tested": 616,
+   "train_pairs": 5,
+   "test_inputs": 1,
+   "dsl_functions": 46
+  },
+  {
+   "task_id": "00d62c1b",
+   "tid": "00d62c1b",
+   "n_accepted": 0,
+   "n_classes": 0,
+   "predictions": [],
+   "class_predictions": [],
+   "unique": false,
+   "unique_flag": false,
+   "depth_solved": null,
+   "elapsed": 2.552,
+   "cert_impossible_depth": 2,
+   "certificate": {
+    "type": "impossibility",
+    "max_depth": 2,
+    "dsl_class": "T0 identity; T1 single LegC atom (bounded parameter sweeps); T2 A(B(g)); T3 beam A(B(C(g))).",
+    "n_tested": 4765,
+    "note": "exhaustive over the bounded parameter grid for this task, not a proof over the full DSL"
+   },
+   "ambiguity_predictions": [],
+   "accepted_by_depth": {
+    "1": [],
+    "2": []
+   },
+   "stages": {
+    "1": {
+     "depth": 1,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 430,
+      "elapsed": 0.136,
+      "n_atoms": 485,
+      "n_distinct_behaviours": 429
+     }
+    },
+    "2": {
+     "depth": 2,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 4335,
+      "elapsed": 2.415,
+      "n_accepted": 0
+     }
+    }
+   },
+   "class_ids": [],
+   "class_sizes": [],
+   "train_violations": null,
+   "n_tested": 4765,
+   "train_pairs": 5,
+   "test_inputs": 1,
+   "dsl_functions": 46
+  },
+  {
+   "task_id": "017c7c7b",
+   "tid": "017c7c7b",
+   "n_accepted": 0,
+   "n_classes": 0,
+   "predictions": [],
+   "class_predictions": [],
+   "unique": false,
+   "unique_flag": false,
+   "depth_solved": null,
+   "elapsed": 0.143,
+   "cert_impossible_depth": 2,
+   "certificate": {
+    "type": "impossibility",
+    "max_depth": 2,
+    "dsl_class": "T0 identity; T1 single LegC atom (bounded parameter sweeps); T2 A(B(g)); T3 beam A(B(C(g))).",
+    "n_tested": 170,
+    "note": "exhaustive over the bounded parameter grid for this task, not a proof over the full DSL"
+   },
+   "ambiguity_predictions": [],
+   "accepted_by_depth": {
+    "1": [],
+    "2": []
+   },
+   "stages": {
+    "1": {
+     "depth": 1,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 170,
+      "elapsed": 0.021,
+      "n_atoms": 267,
+      "n_distinct_behaviours": 169
+     }
+    },
+    "2": {
+     "depth": 2,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 0,
+      "elapsed": 0.121,
+      "n_accepted": 0
+     }
+    }
+   },
+   "class_ids": [],
+   "class_sizes": [],
+   "train_violations": null,
+   "n_tested": 170,
+   "train_pairs": 3,
+   "test_inputs": 1,
+   "dsl_functions": 46
+  },
+  {
+   "task_id": "025d127b",
+   "tid": "025d127b",
+   "n_accepted": 0,
+   "n_classes": 0,
+   "predictions": [],
+   "class_predictions": [],
+   "unique": false,
+   "unique_flag": false,
+   "depth_solved": null,
+   "elapsed": 1.7,
+   "cert_impossible_depth": 2,
+   "certificate": {
+    "type": "impossibility",
+    "max_depth": 2,
+    "dsl_class": "T0 identity; T1 single LegC atom (bounded parameter sweeps); T2 A(B(g)); T3 beam A(B(C(g))).",
+    "n_tested": 8773,
+    "note": "exhaustive over the bounded parameter grid for this task, not a proof over the full DSL"
+   },
+   "ambiguity_predictions": [],
+   "accepted_by_depth": {
+    "1": [],
+    "2": []
+   },
+   "stages": {
+    "1": {
+     "depth": 1,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 307,
+      "elapsed": 0.044,
+      "n_atoms": 377,
+      "n_distinct_behaviours": 306
+     }
+    },
+    "2": {
+     "depth": 2,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 8466,
+      "elapsed": 1.656,
+      "n_accepted": 0
+     }
+    }
+   },
+   "class_ids": [],
+   "class_sizes": [],
+   "train_violations": null,
+   "n_tested": 8773,
+   "train_pairs": 2,
+   "test_inputs": 1,
+   "dsl_functions": 46
+  },
+  {
+   "task_id": "03560426",
+   "tid": "03560426",
+   "n_accepted": 0,
+   "n_classes": 0,
+   "predictions": [],
+   "class_predictions": [],
+   "unique": false,
+   "unique_flag": false,
+   "depth_solved": null,
+   "elapsed": 4.704,
+   "cert_impossible_depth": 2,
+   "certificate": {
+    "type": "impossibility",
+    "max_depth": 2,
+    "dsl_class": "T0 identity; T1 single LegC atom (bounded parameter sweeps); T2 A(B(g)); T3 beam A(B(C(g))).",
+    "n_tested": 19870,
+    "note": "exhaustive over the bounded parameter grid for this task, not a proof over the full DSL"
+   },
+   "ambiguity_predictions": [],
+   "accepted_by_depth": {
+    "1": [],
+    "2": []
+   },
+   "stages": {
+    "1": {
+     "depth": 1,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 231,
+      "elapsed": 0.075,
+      "n_atoms": 428,
+      "n_distinct_behaviours": 230
+     }
+    },
+    "2": {
+     "depth": 2,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 19639,
+      "elapsed": 4.629,
+      "n_accepted": 0
+     }
+    }
+   },
+   "class_ids": [],
+   "class_sizes": [],
+   "train_violations": null,
+   "n_tested": 19870,
+   "train_pairs": 3,
+   "test_inputs": 1,
+   "dsl_functions": 46
+  },
+  {
+   "task_id": "045e512c",
+   "tid": "045e512c",
+   "n_accepted": 0,
+   "n_classes": 0,
+   "predictions": [],
+   "class_predictions": [],
+   "unique": false,
+   "unique_flag": false,
+   "depth_solved": null,
+   "elapsed": 16.262,
+   "cert_impossible_depth": 2,
+   "certificate": {
+    "type": "impossibility",
+    "max_depth": 2,
+    "dsl_class": "T0 identity; T1 single LegC atom (bounded parameter sweeps); T2 A(B(g)); T3 beam A(B(C(g))).",
+    "n_tested": 21766,
+    "note": "exhaustive over the bounded parameter grid for this task, not a proof over the full DSL"
+   },
+   "ambiguity_predictions": [],
+   "accepted_by_depth": {
+    "1": [],
+    "2": []
+   },
+   "stages": {
+    "1": {
+     "depth": 1,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 233,
+      "elapsed": 0.262,
+      "n_atoms": 428,
+      "n_distinct_behaviours": 232
+     }
+    },
+    "2": {
+     "depth": 2,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 21533,
+      "elapsed": 15.999,
+      "n_accepted": 0
+     }
+    }
+   },
+   "class_ids": [],
+   "class_sizes": [],
+   "train_violations": null,
+   "n_tested": 21766,
+   "train_pairs": 3,
+   "test_inputs": 1,
+   "dsl_functions": 46
+  },
+  {
+   "task_id": "0520fde7",
+   "tid": "0520fde7",
+   "n_accepted": 5,
+   "n_classes": 1,
+   "predictions": [
+    [
+     [
+      [
+       2,
+       0,
+       2
+      ],
+      [
+       0,
+       0,
+       0
+      ],
+      [
+       0,
+       0,
+       0
+      ]
+     ]
+    ]
+   ],
+   "class_predictions": [
+    [
+     [
+      [
+       2,
+       0,
+       2
+      ],
+      [
+       0,
+       0,
+       0
+      ],
+      [
+       0,
+       0,
+       0
+      ]
+     ]
+    ]
+   ],
+   "unique": true,
+   "unique_flag": true,
+   "depth_solved": 2,
+   "elapsed": 0.423,
+   "cert_impossible_depth": null,
+   "certificate": null,
+   "ambiguity_predictions": [],
+   "accepted_by_depth": {
+    "1": [],
+    "2": [
+     "replace_color(1,2)>>__macro__(cellwise_uni_col_2_min,<function generate_atoms.<locals>._cw at 0x7f30babdc2c0>)",
+     "__macro__(cellwise_uni_col_2_add,<function generate_atoms.<locals>._cw at 0x7f30babdc040>)>>replace_color(1,0)",
+     "__macro__(cellwise_uni_col_2_mul,<function generate_atoms.<locals>._cw at 0x7f30babdc180>)>>replace_color(1,2)",
+     "__macro__(cellwise_uni_col_2_mul,<function generate_atoms.<locals>._cw at 0x7f30babdc180>)>>swap_colors(1,2)",
+     "__macro__(cellwise_uni_col_2_mul,<function generate_atoms.<locals>._cw at 0x7f30babdc180>)>>swap_colors(2,1)"
+    ]
+   },
+   "stages": {
+    "1": {
+     "depth": 1,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 165,
+      "elapsed": 0.02,
+      "n_atoms": 257,
+      "n_distinct_behaviours": 164
+     }
+    },
+    "2": {
+     "depth": 2,
+     "n_accepted": 5,
+     "n_classes": 1,
+     "class_ids": [
+      "db1d6781a4e42b83"
+     ],
+     "predictions": [
+      [
+       [
+        [
+         2,
+         0,
+         2
+        ],
+        [
+         0,
+         0,
+         0
+        ],
+        [
+         0,
+         0,
+         0
+        ]
+       ]
+      ]
+     ],
+     "class_sizes": [
+      5
+     ],
+     "stage_meta": {
+      "n_tested": 2721,
+      "elapsed": 0.401,
+      "n_accepted": 5
+     }
+    }
+   },
+   "class_ids": [
+    "db1d6781a4e42b83"
+   ],
+   "class_sizes": [
+    5
+   ],
+   "train_violations": 0,
+   "n_tested": 2886,
+   "train_pairs": 3,
+   "test_inputs": 1,
+   "dsl_functions": 46
+  },
+  {
+   "task_id": "05a7bcf2",
+   "tid": "05a7bcf2",
+   "n_accepted": 0,
+   "n_classes": 0,
+   "predictions": [],
+   "class_predictions": [],
+   "unique": false,
+   "unique_flag": false,
+   "depth_solved": null,
+   "elapsed": 11.967,
+   "cert_impossible_depth": 2,
+   "certificate": {
+    "type": "impossibility",
+    "max_depth": 2,
+    "dsl_class": "T0 identity; T1 single LegC atom (bounded parameter sweeps); T2 A(B(g)); T3 beam A(B(C(g))).",
+    "n_tested": 7309,
+    "note": "exhaustive over the bounded parameter grid for this task, not a proof over the full DSL"
+   },
+   "ambiguity_predictions": [],
+   "accepted_by_depth": {
+    "1": [],
+    "2": []
+   },
+   "stages": {
+    "1": {
+     "depth": 1,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 216,
+      "elapsed": 0.313,
+      "n_atoms": 341,
+      "n_distinct_behaviours": 215
+     }
+    },
+    "2": {
+     "depth": 2,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 7093,
+      "elapsed": 11.653,
+      "n_accepted": 0
+     }
+    }
+   },
+   "class_ids": [],
+   "class_sizes": [],
+   "train_violations": null,
+   "n_tested": 7309,
+   "train_pairs": 3,
+   "test_inputs": 1,
+   "dsl_functions": 46
+  },
+  {
+   "task_id": "05f2a901",
+   "tid": "05f2a901",
+   "n_accepted": 0,
+   "n_classes": 0,
+   "predictions": [],
+   "class_predictions": [],
+   "unique": false,
+   "unique_flag": false,
+   "depth_solved": null,
+   "elapsed": 1.006,
+   "cert_impossible_depth": 2,
+   "certificate": {
+    "type": "impossibility",
+    "max_depth": 2,
+    "dsl_class": "T0 identity; T1 single LegC atom (bounded parameter sweeps); T2 A(B(g)); T3 beam A(B(C(g))).",
+    "n_tested": 2985,
+    "note": "exhaustive over the bounded parameter grid for this task, not a proof over the full DSL"
+   },
+   "ambiguity_predictions": [],
+   "accepted_by_depth": {
+    "1": [],
+    "2": []
+   },
+   "stages": {
+    "1": {
+     "depth": 1,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 329,
+      "elapsed": 0.061,
+      "n_atoms": 431,
+      "n_distinct_behaviours": 328
+     }
+    },
+    "2": {
+     "depth": 2,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 2656,
+      "elapsed": 0.944,
+      "n_accepted": 0
+     }
+    }
+   },
+   "class_ids": [],
+   "class_sizes": [],
+   "train_violations": null,
+   "n_tested": 2985,
+   "train_pairs": 3,
+   "test_inputs": 1,
+   "dsl_functions": 46
+  },
+  {
+   "task_id": "06df4c85",
+   "tid": "06df4c85",
+   "n_accepted": 0,
+   "n_classes": 0,
+   "predictions": [],
+   "class_predictions": [],
+   "unique": false,
+   "unique_flag": false,
+   "depth_solved": null,
+   "elapsed": 16.111,
+   "cert_impossible_depth": 2,
+   "certificate": {
+    "type": "impossibility",
+    "max_depth": 2,
+    "dsl_class": "T0 identity; T1 single LegC atom (bounded parameter sweeps); T2 A(B(g)); T3 beam A(B(C(g))).",
+    "n_tested": 15796,
+    "note": "exhaustive over the bounded parameter grid for this task, not a proof over the full DSL"
+   },
+   "ambiguity_predictions": [],
+   "accepted_by_depth": {
+    "1": [],
+    "2": []
+   },
+   "stages": {
+    "1": {
+     "depth": 1,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 364,
+      "elapsed": 0.246,
+      "n_atoms": 476,
+      "n_distinct_behaviours": 363
+     }
+    },
+    "2": {
+     "depth": 2,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 15432,
+      "elapsed": 15.864,
+      "n_accepted": 0
+     }
+    }
+   },
+   "class_ids": [],
+   "class_sizes": [],
+   "train_violations": null,
+   "n_tested": 15796,
+   "train_pairs": 3,
+   "test_inputs": 1,
+   "dsl_functions": 46
+  },
+  {
+   "task_id": "070dd51e",
+   "tid": "070dd51e",
+   "n_accepted": 0,
+   "n_classes": 0,
+   "predictions": [],
+   "class_predictions": [],
+   "unique": false,
+   "unique_flag": false,
+   "depth_solved": null,
+   "elapsed": 16.466,
+   "cert_impossible_depth": 2,
+   "certificate": {
+    "type": "impossibility",
+    "max_depth": 2,
+    "dsl_class": "T0 identity; T1 single LegC atom (bounded parameter sweeps); T2 A(B(g)); T3 beam A(B(C(g))).",
+    "n_tested": 28979,
+    "note": "exhaustive over the bounded parameter grid for this task, not a proof over the full DSL"
+   },
+   "ambiguity_predictions": [],
+   "accepted_by_depth": {
+    "1": [],
+    "2": []
+   },
+   "stages": {
+    "1": {
+     "depth": 1,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 409,
+      "elapsed": 0.239,
+      "n_atoms": 546,
+      "n_distinct_behaviours": 408
+     }
+    },
+    "2": {
+     "depth": 2,
+     "n_accepted": 0,
+     "n_classes": 0,
+     "class_ids": [],
+     "predictions": [],
+     "class_sizes": [],
+     "stage_meta": {
+      "n_tested": 28570,
+      "elapsed": 16.226,
+      "n_accepted": 0
+     }
+    }
+   },
+   "class_ids": [],
+   "class_sizes": [],
+   "train_violations": null,
+   "n_tested": 28979,
+   "train_pairs": 2,
+   "test_inputs": 1,
+   "dsl_functions": 46
+  }
+ ]
+}

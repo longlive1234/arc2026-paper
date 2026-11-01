@@ -1,0 +1,19 @@
+{
+  "n": 5000000,
+  "K": 8,
+  "violations": 613,
+  "violation_rate": 0.0001226,
+  "vacuous_fraction": 0.651056,
+  "non_vacuous_fraction": 0.34894400000000003,
+  "mean_p1": 0.5680329856014396,
+  "mean_p2": 0.16074790339603906,
+  "mean_I": 0.3328294885274352,
+  "mean_gain": 0.08806887718417165,
+  "mean_cap_gain": 0.2093835475729749,
+  "tightness_ratio_mean": 8.726708867948345,
+  "tightness_ratio_max": 70103.99316609294,
+  "max_bound_excess": 7.010399316609295e-08,
+  "violations_tol_1e6": 0,
+  "tightness_ratio_bigcap_mean": 0.16429721503627115,
+  "elapsed_s": 29.71
+}
