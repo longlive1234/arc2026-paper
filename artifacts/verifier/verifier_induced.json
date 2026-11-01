@@ -1,7 +1,7 @@
 {
  "schema": "verifier-induced-v1",
- "engine_path": "code/lab/out/verifier_search_eval.json",
- "engine_sha256": "923875a94ae02a7fe3aec6dd7f548e69feb9166129cca6f529026bfdf5a41ec0",
+ "engine_path": "out/verifier_search_eval.json",
+ "engine_sha256": "493cc629d237d22d6f4d6ac273d942c27eaa02c015e021a065c35caf2fba6c55",
  "labels": {
   "path": "data/comp/arc-agi_evaluation_solutions.json",
   "sha256": "84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1",
@@ -11,7 +11,7 @@
   "script": "code/lab/verifier_search.py",
   "reference_dsl": "reference/arc_induction_v2.py::RUNTIME_CODE",
   "dsl_functions": 46,
-  "generated_utc": "2026-11-01T08:07:24Z",
+  "generated_utc": "2026-11-01T08:55:24Z",
   "split": "eval",
   "limit": 0
  },
@@ -19,13 +19,13 @@
   "tasks": "eval",
   "limit": 0,
   "out": "out/verifier_search_eval.json",
-  "workers": 56,
+  "workers": 1,
   "max_depth": 2,
   "t3_beam": 0,
   "atom_cap": 1800,
   "timeout": 1.0
  },
- "engine_wall_s": 456.7,
+ "engine_wall_s": 2103.3,
  "engine_summary": {
   "n_tasks": 120,
   "solved_tasks": 0,
@@ -107,8 +107,8 @@
    "0": 120
   },
   "empty_acceptance_d3_count": 120,
-  "total_cpu_min": 334.66,
-  "mean_cpu_min": 2.789,
+  "total_cpu_min": 35.05,
+  "mean_cpu_min": 0.292,
   "depth_counts": {
    "0": 0,
    "1": 0,
@@ -182,19 +182,19 @@
   {
    "depth": 1,
    "coverage_pct": 0.0,
-   "cpu_min": 15.53,
+   "cpu_min": 0.65,
    "marginal_gain_pp_per_cpu_min": 0.0
   },
   {
    "depth": 2,
    "coverage_pct": 0.0,
-   "cpu_min": 334.63,
+   "cpu_min": 35.05,
    "marginal_gain_pp_per_cpu_min": 0.0
   },
   {
    "depth": 3,
    "coverage_pct": 0.0,
-   "cpu_min": 334.63,
+   "cpu_min": 35.05,
    "marginal_gain_pp_per_cpu_min": null
   }
  ],

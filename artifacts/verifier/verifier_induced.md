@@ -1,6 +1,6 @@
 # Verifier-induced identifiability (T8)
 
-Engine `code/lab/out/verifier_search_eval.json` sha `923875a94ae02a7fe3aec6dd7f548e69feb9166129cca6f529026bfdf5a41ec0`; labels `/home/chen/.dsh/ungrouped/arc2026/data/comp/arc-agi_evaluation_solutions.json` sha `84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1` (evaluation only).
+Engine `out/verifier_search_eval.json` sha `493cc629d237d22d6f4d6ac273d942c27eaa02c015e021a065c35caf2fba6c55`; labels `/home/chen/.dsh/ungrouped/arc2026/data/comp/arc-agi_evaluation_solutions.json` sha `84be4f4f39b79e82c36d565fc878830988b094917f052ee7069aef30b33ca8f1` (evaluation only).
 
 ## Full eval120 verifier
 
@@ -8,7 +8,7 @@ Engine `code/lab/out/verifier_search_eval.json` sha `923875a94ae02a7fe3aec6dd7f5
 - Top-2 class coverage: 0.0%
 - Attempt-1 precision: {'n_unique_tasks': 0, 'n_unique_exact': 0}
 - Empty acceptance depth≤3: 120/120 (1.0)
-- CPU total 334.66 min; mean 2.789 min/task; depth counts {'0': 0, '1': 0, '2': 0, '3': 0}
+- CPU total 35.05 min; mean 0.292 min/task; depth counts {'0': 0, '1': 0, '2': 0, '3': 0}
 
 ## F1a / F1b
 
@@ -22,9 +22,9 @@ Engine `code/lab/out/verifier_search_eval.json` sha `923875a94ae02a7fe3aec6dd7f5
 | depth | coverage % | CPU min | marginal pp/min |
 | :--- | ---: | ---: | ---: |
 | 0 | 0.0 | 0.0 | None |
-| 1 | 0.0 | 15.53 | 0.0 |
-| 2 | 0.0 | 334.63 | 0.0 |
-| 3 | 0.0 | 334.63 | None |
+| 1 | 0.0 | 0.65 | 0.0 |
+| 2 | 0.0 | 35.05 | 0.0 |
+| 3 | 0.0 | 35.05 | None |
 
 ## Joint 20-task hybrid (exploratory)
 
@@ -38,7 +38,7 @@ Engine `code/lab/out/verifier_search_eval.json` sha `923875a94ae02a7fe3aec6dd7f5
 
 | run | n tasks | accepted | unique | unique coverage | certificate empty | mean CPU min |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| eval120 | 120 | 0 | 0 | 0.0% | 1.0 | 2.789 |
+| eval120 | 120 | 0 | 0 | 0.0% | 1.0 | 0.292 |
 | train control | 12 | 1 | 1 | 8.33% | 0.9167 | 0.1 |
 
 ## Null / control runs
