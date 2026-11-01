@@ -4,10 +4,10 @@
 
 ## Artifacts
 
-- **Paper:** `paper/paper_planC_draft_v6.md` sha `3113fbec…`; **8,044 words** (v6 cap 8,200); 42 refs; 12 figures.
-- **PDF:** `paper/paper.pdf` sha `4f8dc822…` (23 pp).
-- **arXiv/Overleaf:** `paper/arxiv_source/main.tex` sha `8a8e4ac6…` (12 figures, 13 tables, 42 refs).
-- **Writeup:** `paper/writeup_kaggle_v6.md` sha `8a220100…`; **1,478 raw / 1,476 non-placeholder** words (limit 1,500); 1 marker only (S5b pending).
+- **Paper:** `paper/paper_planC_draft_v6.md` sha `7545550f…`; **8,109 words** (v6 cap 8,200); 42 refs; 12 figures.
+- **PDF:** `paper/paper.pdf` sha `3624cb72…` (24 pp).
+- **arXiv/Overleaf:** `paper/arxiv_source/main.tex` sha `37cef939…` (12 figures, 13 tables, 42 refs).
+- **Writeup:** `paper/writeup_kaggle_v6.md` sha `0baaf0df…`; **1,478 raw / 1,476 non-placeholder** words (limit 1,500); 1 marker only (S5b pending).
 
 ## New in v6
 
