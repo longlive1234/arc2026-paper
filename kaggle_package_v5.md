@@ -2,6 +2,8 @@
 
 **Paper submission ID: `57681632`** (S5 L4 v16; public LB **16.25%**, champion). S1 ref 57663405 (14.17%) is the first scored attempt; S6 57716141 = 15.42%, S5_ens 57752011 = 15.42%, S5+LegC 57785740 = 14.17% (negative), CPU probe 57500870 = 0.00.
 
+**Paper artifacts:** draft `paper/paper_planC_draft_v5.md` sha `a5d9728c…` (6,850 words); PDF `paper/paper.pdf` sha `af680342…` (21 pp); arXiv `paper/arxiv_source/main.tex` sha `e725ecd7…` (41 refs, 11 figures, 11 tables).
+
 ## Writeup
 
 - `paper/writeup_kaggle_v5.md` — sha256 `bb762e70b98b8cfb21ad6b7286002d032a6dfe4282072a5d08dcb79990a05bcd`
