@@ -7,11 +7,11 @@
 - **Paper:** `paper/paper_planC_draft_v6.md` sha `7545550f…`; **8,109 words** (v6 cap 8,200); 42 refs; 12 figures.
 - **PDF:** `paper/paper.pdf` sha `3624cb72…` (24 pp).
 - **arXiv/Overleaf:** `paper/arxiv_source/main.tex` sha `37cef939…` (12 figures, 13 tables, 42 refs).
-- **Writeup:** `paper/writeup_kaggle_v6.md` sha `0baaf0df…`; **1,478 raw / 1,476 non-placeholder** words (limit 1,500); 1 marker only (S5b pending).
+- **Writeup:** `paper/writeup_kaggle_v6.md` sha `64fac6a1…`; **1,477 raw / 1,475 non-placeholder** words (limit 1,500); 1 marker only (S5b pending).
 
 ## New in v6
 
-Theorem 8 (verifier-induced identifiability): unique accepted behavior classes close the identifiability gap conditional on reachability; impossibility certificates bound depth allocation; hybrid exact-match correction with frozen notation. Bounded-DSL verifier on public eval120: **0/120 accepted**, 120/120 depth-2 impossibility certificates (334.7 CPU-min, 56 workers); F1a vacuous, F1b INCONCLUSIVE, F2 pre-registered FAIL (hybrid = TTT top-2, H−T=0; complementarity untestable at zero verifier coverage), F3 FAIL at measured depth 2 (depth 3 not measured/not imputed). Train control **1/12** (0520fde7); learned rules 0/120; LLM chat 0/20; LLM reasoner 0/10 (token-cap infrastructure null). GPU-scale implementation checks: T6 1e8 instances, 0 violations at 1e-6 (max excess 1.12e-7); T7 2e6 tasks, gap = mean δ = .260316, water-filling 3.5–8.8× uniform (TITAN Xp 12 GB cu118, 56-core CPU).
+Theorem 8 (verifier-induced identifiability): unique accepted behavior classes close the identifiability gap conditional on reachability; impossibility certificates bound depth allocation; hybrid exact-match correction with frozen notation. Bounded-DSL verifier on public eval120: **0/120 accepted**, 120/120 depth-2 impossibility certificates (35.05 CPU-min serial); F1a vacuous, F1b INCONCLUSIVE, F2 pre-registered FAIL (hybrid = TTT top-2, H−T=0; complementarity untestable at zero verifier coverage), F3 FAIL at measured depth 2 (depth 3 not measured/not imputed). Train control **1/12** (0520fde7); learned rules 0/120; LLM chat 0/20; LLM reasoner 0/10 (token-cap infrastructure null). GPU-scale implementation checks: T6 1e8 instances, 0 violations at 1e-6 (max excess 1.12e-7); T7 2e6 tasks, gap = mean δ = .260316, water-filling 3.5–8.8× uniform (TITAN Xp 12 GB cu118, 56-core CPU).
 
 Honest framing: verifier numbers are **public-eval diagnostics, labels scoring-only, not a competition entry**; depth 3 is not imputed; LLM null is infrastructure-limited; no hidden-test/SOTA/medal claim; best hidden 16.25; reference replication 3/20.
 

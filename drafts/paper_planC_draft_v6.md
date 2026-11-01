@@ -273,13 +273,13 @@ On this single 20-task subset (no CI claim), the all-config union (incl. S5_ens)
 
 ### 4.5 Verifier experiments: bounded-DSL results
 
-We tested an AWM-style verifier-first search (LegC DSL; T0 identity, T1 atoms, T2 composition) on public eval120. The depth-2 engine accepted **0/120** programs: unique coverage 0%, attempt-1 precision undefined, **certificate fraction 120/120 impossibility**, 334.7 CPU-min total (2.79 CPU-min/task; 56 workers). F1a is PASS but vacuous (nothing accepted to re-verify); F1b is INCONCLUSIVE (no unique classes); F2's pre-registered verdict is **FAIL** (hybrid = TTT top-2; on the exploratory 20-task subset S1 4/20 = 20.0% vs verifier-only 0%, H−T=0, 80% CI [0,0]); because verifier coverage is zero, the complementarity hypothesis is untestable in interpretation and the hybrid reduces exactly to TTT top-1+runner-up, consistent with T8's coverage premise failing on AGI-2. F3 **FAILS at measured depth 2** (acceptance flat for all 120; depth 3 not measured and not imputed). Learned-rule families (0/120), DeepSeek-chat (0/20), and DeepSeek-reasoner (0/10; all completions token-truncated) give nulls; the reasoner null is **infrastructure-limited, not capability evidence**. The n=12 training control yields **1/12 unique solve (0520fde7)**, confirming the engine can certify reachable programs; it is small and not used for a rate claim.
+We tested an AWM-style verifier-first search (LegC DSL; T0 identity, T1 atoms, T2 composition) on public eval120. The depth-2 engine accepted **0/120** programs: unique coverage 0%, attempt-1 precision undefined, **certificate fraction 120/120 impossibility**, 35.05 CPU-min total (0.292 CPU-min/task; serial; wall 2103 s). F1a is PASS but vacuous (nothing accepted to re-verify); F1b is INCONCLUSIVE (no unique classes); F2's pre-registered verdict is **FAIL** (hybrid = TTT top-2; on the exploratory 20-task subset S1 4/20 = 20.0% vs verifier-only 0%, H−T=0, 80% CI [0,0]); because verifier coverage is zero, the complementarity hypothesis is untestable in interpretation and the hybrid reduces exactly to TTT top-1+runner-up, consistent with T8's coverage premise failing on AGI-2. F3 **FAILS at measured depth 2** (acceptance flat for all 120; depth 3 not measured and not imputed). Learned-rule families (0/120), DeepSeek-chat (0/20), and DeepSeek-reasoner (0/10; all completions token-truncated) give nulls; the reasoner null is **infrastructure-limited, not capability evidence**. The n=12 training control yields **1/12 unique solve (0520fde7)**, confirming the engine can certify reachable programs; it is small and not used for a rate claim.
 
 **Table 14. Verifier search runs** (public eval120; labels used for scoring only; not a competition entry).
 
 | run | n | accepted | unique | empty-certificate | note |
 |---|---|---|---|---|---|
-| eval120 | 120 | 0 | 0 | 120/120 | 334.7 CPU-min, 56 workers |
+| eval120 | 120 | 0 | 0 | 120/120 | 35.05 CPU-min serial; wall 2103 s |
 | train control | 12 | 1 | 1 | 11/12 | unique 0520fde7; 1/12, no rate claim |
 | learned rules | 120 | 0 | 0 | — | 0.3 min |
 | LLM chat | 20 | 0 | 0 | — | DeepSeek-chat k=4 |
