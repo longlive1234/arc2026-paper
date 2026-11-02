@@ -1,0 +1,88 @@
+{
+ "schema": "final-lb-snapshot-v1",
+ "snapshot_utc": "2026-11-02T00:02:58Z",
+ "source_zip": {
+  "path": "analysis/results/leaderboard_20261102T000305Z.zip",
+  "sha256": "97b3941b6f79af3a57f7d275f3b4f5f5a36e96ec52526ec44e525eaceb2bb972"
+ },
+ "csv": {
+  "path": "analysis/results/lb_final_20261102T000305Z/arc-prize-2026-arc-agi-2-publicleaderboard-2026-11-02T00:02:58.csv",
+  "sha256": "86a97c8858889c64f1d3042f2f8ca3b57a4aa2029d6440924eddf6ccc1d10934"
+ },
+ "n_rows": 3591,
+ "n_positive_rank": 3590,
+ "n_zero_rank": 1,
+ "ranked_teams_reported": 3591,
+ "note": "3591 leaderboard entries as reported; 3590 positive-rank teams + 1 rank-0 sample/submission row. Rank anchors are context only, not medal-cutoff claims.",
+ "leader": {
+  "rank": 1,
+  "team": "Tufa Labs",
+  "score": 88.06
+ },
+ "our_team": {
+  "rank": 2429,
+  "team_id": "17156552",
+  "team_name": "wen Chen",
+  "score": 16.67,
+  "submission_count": 9,
+  "last_submission_date": "2026-11-01 00:10:23",
+  "members": "wen134"
+ },
+ "anchors": [
+  {
+   "rank": 30,
+   "score": 69.72,
+   "team": "mikelou1"
+  },
+  {
+   "rank": 50,
+   "score": 57.78,
+   "team": "codjjj"
+  },
+  {
+   "rank": 100,
+   "score": 39.17,
+   "team": "Richard Freinschlag"
+  },
+  {
+   "rank": 200,
+   "score": 33.06,
+   "team": "Mohamed Mahmoud Amar"
+  },
+  {
+   "rank": 500,
+   "score": 31.81,
+   "team": "Alfira Mukat"
+  },
+  {
+   "rank": 1000,
+   "score": 30.97,
+   "team": "Alyahya Akkam"
+  },
+  {
+   "rank": 2000,
+   "score": 28.89,
+   "team": "Baoshen Yu"
+  }
+ ],
+ "prior_champion": {
+  "score": 16.25,
+  "rank": 2432,
+  "team": "TanadetST"
+ },
+ "rank_percentiles_context": {
+  "top_0pct_rank": 30,
+  "top_1pct_rank": 50,
+  "top_2pct_rank": 100,
+  "top_5pct_rank": 200,
+  "top_13pct_rank": 500,
+  "top_27pct_rank": 1000,
+  "top_55pct_rank": 2000
+ },
+ "source_command": "kaggle competitions leaderboard -c arc-prize-2026-arc-agi-2 --download (zip 2026-11-02T00:03:05Z); extracted CSV 2026-11-02T00:02:58Z",
+ "regenerate": "python analysis/final_lb_snapshot.py",
+ "figure": {
+  "path": "paper/figures/fig8_budget_accuracy.png",
+  "sha256": "9cbb9e12132095dfc4ff1f0b6899c2aa98ed077c37dd277706bbfbff9f5532ff"
+ }
+}

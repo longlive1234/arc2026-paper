@@ -2,7 +2,7 @@
 
 **Title:** *Compute Cannot Buy Identifiability: Information-Limited Two-Attempt Selection in ARC-AGI-2 Solver Pools*
 **Subtitle:** *An information bound, a conditional compute-separation theorem, and measured evidence from real solver pools and six scored submissions*
-**Status:** **v6 (1 November 2026)** — 8,109-word main text (internal cap 8,200), 42 references, 12 figures, 13 tables; v4 (`drafts/paper_planC_draft_v4.md`) and v5 (`drafts/paper_planC_draft_v5.md`) are archived frozen copies. No priority claim; not peer reviewed. v6 adds **Theorem 8 (verifier-induced identifiability)**, an AWM-inspired verify-first experiment on the public eval split, and **large-scale GPU numerical verification** of Theorems 6–7; Theorem 6 remains proven but empirically vacuous, T7 conditional, T8 realized only in its impossibility-certificate regime with our bounded hypothesis class.
+**Status:** **v6.1 (2 November 2026, final competition day)** — 8,198-word main text (internal cap 8,200), 42 references, 12 figures, 13 tables; v4/v5/v6 are archived frozen copies. v6.1 updates the final result to **seven scored Kaggle submissions, champion S5b 16.67% (ref 57854697)**, final public-LB snapshot 2026-11-02 (3,591 teams, our rank 2,429), the Fig. 8 panel, and the honest T7 interpretation (S5b is a generation-side change, not allocation). No priority claim; not peer reviewed. v6 adds **Theorem 8 (verifier-induced identifiability)**, an AWM-inspired verify-first experiment on the public eval split, and **large-scale GPU numerical verification** of Theorems 6–7; Theorem 6 remains proven but empirically vacuous, T7 conditional, T8 realized only in its impossibility-certificate regime with our bounded hypothesis class.
 
 ## What the paper contributes
 
@@ -69,12 +69,13 @@ are mutually exclusive, so the two-slot decision is a **label-free identificatio
 
 | file | contents |
 |---|---|
-| `paper.pdf` | compiled paper v6 (24 pages, 12 figures, 13 tables) |
-| `drafts/paper_planC_draft_v6.md` | Markdown source of the paper v6 (8,109 words) |
-| `writeup_kaggle_v6.md` | Kaggle paper-track writeup (≤1,500 words) |
+| `paper.pdf` | compiled paper v6.1 (24 pages, 12 figures, 13 tables) |
+| `drafts/paper_planC_draft_v6.1.md` | Markdown source of the paper v6.1 (8,198 words) |
+| `writeup_kaggle_v6.1.md` | Kaggle paper-track writeup (1,500 words, final) |
 | `artifacts/verifier/` | verifier experiment JSON+MD (eval120 0/120, train12 1/12, learned-rule/LLM nulls) |
 | `artifacts/gpu_sim/` | GPU-scale T6/T7 validation JSON+MD + raw simulation outputs |
 | `artifacts/raw/` | canonical engine outputs used for the paper tables |
+| `artifacts/final_lb_snapshot_2026-11-02.*`, `artifacts/lb/` | final public-LB snapshot (2026-11-02T00:02:58Z) and provenance |
 | `evidence_table.md` | numeric-evidence audit table (all paper numbers traceable to scripts) |
 | `kaggle_package_final.md` | final submission ID, media-gallery order, scoreboard |
 | `FINAL_REPORT_CN.md` | Chinese final report (scores, ablations, honest limits) |

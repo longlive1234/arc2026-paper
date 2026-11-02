@@ -1,7 +1,7 @@
 # Kaggle Paper-Track Writeup — form field values (copy/paste)
 
 Competition: https://www.kaggle.com/competitions/arc-prize-2026-paper-track/writeups
-Generated for the v6 package (S5b line is neutral "pending at submission"; update later if desired).
+Generated for the v6.1 final package (seven scored submissions; S5b champion 16.67, ref 57854697).
 
 ## 标题 Title (70/80 chars)
 ```
@@ -37,13 +37,13 @@ Upload: `paper/figures/cover_560x280.png` （已按 560×280 生成）
 3. `paper/figures/fig7_pool_scaling.png`
    Caption: `Prefix two-attempt coverage vs candidate-prefix L (CompressARC, pilot16, dev20 S1/S5/S5_ens): alpha-hat = 1.83 [1.67, 2.06], saturation L* ≈ 257 for CompressARC. Fixed-solver top-2 reported separately; model fit, not a T7 test.`
 4. `paper/figures/fig8_budget_accuracy.png`
-   Caption: `Final public-LB snapshot (2026-11-01): 3,572 teams; our champion rank 2,414 at 16.25 (three teams tied). Rank anchors #30 68.06 … #1000 30.97. Public-half context only; no medal/SOTA claim.`
+   Caption: `Final public-LB snapshot (2026-11-02): 3,591 teams; our champion rank 2,429 at 16.67 (three teams tied). Rank anchors #30 69.72 … #1000 30.97. Public-half context only; no medal/SOTA claim.`
 
 Do NOT upload the retired diversification-threshold figure (Fig. 9 old) or PILOT-labelled assets as evidence.
 
 ## 项目描述 Project description
 Paste the full content of `paper/paper_track_submission/PROJECT_DESCRIPTION.md`
-(1,483 words; ≤1,500; H1 title removed so it does not duplicate the Title field — the body starts at "## Abstract").
+(≤1,500; H1 title removed so it does not duplicate the Title field — the body starts at "## Abstract").
 It already contains the three URLs, the best-score table, and the honesty caveats.
 
 ## 附件 / 项目链接 Attachments & Project links
@@ -53,7 +53,7 @@ Add these links (and optionally upload the PDF under Files):
 - Paper repo (CC BY 4.0): `https://github.com/longlive1234/arc2026-paper`
 - Code repo (MIT-0): `https://github.com/longlive1234/arc-selection`
 - Notebook (make Public first): `https://www.kaggle.com/code/wen134/arc2026-ttt`
-- Main-track submission ID: `57681632` (champion S5 L4, public LB 16.25%)
+- Main-track submission ID: `57854697` (champion S5b L4, public LB 16.67%)
 - arXiv/Overleaf source (optional): `paper/arxiv_source/`
 
 ## DOI 引文 DOI citation

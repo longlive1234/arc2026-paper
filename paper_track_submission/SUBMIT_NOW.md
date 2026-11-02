@@ -1,3 +1,13 @@
+# FINAL STATUS — 2026-11-02 (competition closed)
+
+- **Champion: S5b ref `57854697` = 16.67 public LB** (seven scored submissions; prior S5 `57681632` = 16.25).
+- Final duplicate `57887571` (same v24 config) is PENDING and not used as evidence; best-of-submissions keeps 16.67.
+- Final LB snapshot 2026-11-02: 3,591 teams; our team rank **2,429** at 16.67.
+- Paper: `paper_planC_draft_v6.1.md` / `paper.pdf` v6.1; writeup `writeup_kaggle_v6.1.md` (1,500 words, 0 markers); paper-track submission ID **57854697**.
+- Repository push pending Lead/QC; paper track deadline 2026-11-08.
+
+---
+
 # 两个比赛的提交页 — 最终操作清单
 
 生成时间：2026-11-01 ~11:30 UTC。本文件说明**哪些提交已自动完成/已排程**，以及**需要你在浏览器点完的最后一步**。
